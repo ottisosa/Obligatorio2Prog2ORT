@@ -105,10 +105,10 @@ public class comenzar extends javax.swing.JFrame {
         setBounds(0, 0, 573, 231);
     }// </editor-fold>//GEN-END:initComponents
 
-    menu men = new menu();
 
     private void btnSisNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisNuevoActionPerformed
 
+        menu men = new menu();
         this.dispose();
         men.setVisible(true);
 
@@ -116,12 +116,14 @@ public class comenzar extends javax.swing.JFrame {
 
     private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
 
+        menu men = new menu();
         this.dispose();
         men.setVisible(true);
     }//GEN-LAST:event_btnSisGuardadoActionPerformed
 
     private void btnSisCargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisCargadoActionPerformed
 
+        menu men = new menu();
         this.dispose();
         men.setVisible(true);
     }//GEN-LAST:event_btnSisCargadoActionPerformed
