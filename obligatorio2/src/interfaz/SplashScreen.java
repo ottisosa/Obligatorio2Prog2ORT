@@ -14,6 +14,9 @@ public class SplashScreen extends javax.swing.JFrame {
         }
         this.dispose();
         
+        Comenzar com = new Comenzar();
+        com.setVisible(true);
+        
     }
 
     @SuppressWarnings("unchecked")
