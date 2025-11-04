@@ -19,7 +19,9 @@ public class Obligatorio2 {
         }
         splash.dispose();
         
-        
+        Comenzar com = new Comenzar();
+       
+        com.setVisible(true);
               
         
         
