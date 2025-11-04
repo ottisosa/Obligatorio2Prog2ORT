@@ -12,7 +12,7 @@ public class Obligatorio2 {
         SplashScreen splash = new SplashScreen();
         splash.setVisible(true);
         try{
-            Thread.sleep(4000);
+            Thread.sleep(3000);
         }
         catch(InterruptedException e){
         }
