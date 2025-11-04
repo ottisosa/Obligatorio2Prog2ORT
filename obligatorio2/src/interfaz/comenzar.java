@@ -1,7 +1,6 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
 public class comenzar extends javax.swing.JFrame {
 
     /**
@@ -9,6 +8,7 @@ public class comenzar extends javax.swing.JFrame {
      */
     public comenzar() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -22,9 +22,9 @@ public class comenzar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSisNuevo = new javax.swing.JButton();
+        btnSisGuardado = new javax.swing.JButton();
+        btnSisCargado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -35,23 +35,38 @@ public class comenzar extends javax.swing.JFrame {
         jLabel1.setText("Eliga una opcion");
         jLabel1.setName(""); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 204));
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sistema nuevo");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnSisNuevo.setBackground(new java.awt.Color(0, 0, 204));
+        btnSisNuevo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnSisNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnSisNuevo.setText("Sistema nuevo");
+        btnSisNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnSisNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSisNuevoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
-        jButton2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Sistema guardado");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnSisGuardado.setBackground(new java.awt.Color(0, 0, 204));
+        btnSisGuardado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnSisGuardado.setForeground(new java.awt.Color(255, 255, 255));
+        btnSisGuardado.setText("Sistema guardado");
+        btnSisGuardado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnSisGuardado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSisGuardadoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 204));
-        jButton3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Sistema con datos precargados");
-        jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnSisCargado.setBackground(new java.awt.Color(0, 0, 204));
+        btnSisCargado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnSisCargado.setForeground(new java.awt.Color(255, 255, 255));
+        btnSisCargado.setText("Sistema con datos precargados");
+        btnSisCargado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnSisCargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSisCargadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,11 +79,11 @@ public class comenzar extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSisNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSisGuardado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)))
+                        .addComponent(btnSisCargado, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -78,9 +93,9 @@ public class comenzar extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSisNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSisGuardado, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSisCargado, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -90,12 +105,32 @@ public class comenzar extends javax.swing.JFrame {
         setBounds(0, 0, 573, 231);
     }// </editor-fold>//GEN-END:initComponents
 
+    menu men = new menu();
+
+    private void btnSisNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisNuevoActionPerformed
+
+        this.dispose();
+        men.setVisible(true);
+
+    }//GEN-LAST:event_btnSisNuevoActionPerformed
+
+    private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
+
+        this.dispose();
+        men.setVisible(true);
+    }//GEN-LAST:event_btnSisGuardadoActionPerformed
+
+    private void btnSisCargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisCargadoActionPerformed
+
+        this.dispose();
+        men.setVisible(true);
+    }//GEN-LAST:event_btnSisCargadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnSisCargado;
+    private javax.swing.JButton btnSisGuardado;
+    private javax.swing.JButton btnSisNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
