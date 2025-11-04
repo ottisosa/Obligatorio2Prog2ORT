@@ -3,12 +3,12 @@ package interfaz;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 import javax.swing.*;
 
-public class menu extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame {
 
     /**
      * Creates new form menuPrincipal
      */
-    public menu() {
+    public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
 

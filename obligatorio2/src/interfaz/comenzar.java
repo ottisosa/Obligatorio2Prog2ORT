@@ -1,12 +1,12 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-public class comenzar extends javax.swing.JFrame {
+public class Comenzar extends javax.swing.JFrame {
 
     /**
      * Creates new form comenzar
      */
-    public comenzar() {
+    public Comenzar() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -108,7 +108,7 @@ public class comenzar extends javax.swing.JFrame {
 
     private void btnSisNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisNuevoActionPerformed
 
-        menu men = new menu();
+        Menu men = new Menu();
         this.dispose();
         men.setVisible(true);
 
@@ -116,14 +116,14 @@ public class comenzar extends javax.swing.JFrame {
 
     private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
 
-        menu men = new menu();
+        Menu men = new Menu();
         this.dispose();
         men.setVisible(true);
     }//GEN-LAST:event_btnSisGuardadoActionPerformed
 
     private void btnSisCargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisCargadoActionPerformed
 
-        menu men = new menu();
+        Menu men = new Menu();
         this.dispose();
         men.setVisible(true);
     }//GEN-LAST:event_btnSisCargadoActionPerformed
