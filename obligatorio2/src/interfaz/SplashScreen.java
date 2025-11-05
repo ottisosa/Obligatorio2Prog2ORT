@@ -30,11 +30,11 @@ public class SplashScreen extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Documents\\GitHub\\Obligatorio2Prog2ORT\\obligatorio2\\img\\logo azul.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo azul.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 500, 500);
+        jLabel1.setBounds(0, -20, 500, 540);
 
-        setBounds(0, 0, 516, 526);
+        setBounds(0, 0, 514, 532);
     }// </editor-fold>//GEN-END:initComponents
 
 
