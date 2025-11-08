@@ -26,9 +26,20 @@ public class Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        arAlta = new javax.swing.JMenuItem();
+        arBaja = new javax.swing.JMenuItem();
+        arMod = new javax.swing.JMenuItem();
+        arMov = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mgAlta = new javax.swing.JMenuItem();
+        mgBaja = new javax.swing.JMenuItem();
+        mgMod = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        empAlta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        repInt = new javax.swing.JMenuItem();
+        repAr = new javax.swing.JMenuItem();
+        repMov = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menu");
@@ -58,20 +69,52 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.setBorder(new javax.swing.border.MatteBorder(null));
 
         jMenu1.setText("Areas");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
-            }
-        });
+
+        arAlta.setText("Alta");
+        jMenu1.add(arAlta);
+
+        arBaja.setText("Baja");
+        jMenu1.add(arBaja);
+
+        arMod.setText("Modificación");
+        jMenu1.add(arMod);
+
+        arMov.setText("Realizar Movimiento");
+        jMenu1.add(arMov);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Managers");
+
+        mgAlta.setText("Alta");
+        jMenu2.add(mgAlta);
+
+        mgBaja.setText("Baja");
+        jMenu2.add(mgBaja);
+
+        mgMod.setText("Modificación");
+        jMenu2.add(mgMod);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Empleados");
+
+        empAlta.setText("Alta");
+        jMenu3.add(empAlta);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Reportes");
+
+        repInt.setText("Reporte Inteligente");
+        jMenu4.add(repInt);
+
+        repAr.setText("Reporte de estado de áreas");
+        jMenu4.add(repAr);
+
+        repMov.setText("Reporte de movimientos");
+        jMenu4.add(repMov);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -87,19 +130,24 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formKeyPressed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-
-        Comenzar com = new Comenzar();
-        com.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem arAlta;
+    private javax.swing.JMenuItem arBaja;
+    private javax.swing.JMenuItem arMod;
+    private javax.swing.JMenuItem arMov;
+    private javax.swing.JMenuItem empAlta;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem mgAlta;
+    private javax.swing.JMenuItem mgBaja;
+    private javax.swing.JMenuItem mgMod;
+    private javax.swing.JMenuItem repAr;
+    private javax.swing.JMenuItem repInt;
+    private javax.swing.JMenuItem repMov;
     // End of variables declaration//GEN-END:variables
 }
