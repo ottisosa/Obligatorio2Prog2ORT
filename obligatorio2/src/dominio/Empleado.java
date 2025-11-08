@@ -7,7 +7,7 @@ public class Empleado extends Persona{
     private Manager manager;
     private Area area;
 
-    public Empleado(int salario, Manager manager, Area area, String nombre, int ci, int celular) {
+    public Empleado(int salario, Manager manager, Area area, String nombre, String ci, String celular) {
         super(nombre, ci, celular);
         this.salario = salario;
         this.manager = manager;
