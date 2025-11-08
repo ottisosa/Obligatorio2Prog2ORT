@@ -57,6 +57,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.setBorder(new javax.swing.border.MatteBorder(null));
 
         jMenu1.setText("Areas");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Managers");
@@ -80,6 +85,12 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_formKeyPressed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+
+        Comenzar com = new Comenzar();
+        com.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
