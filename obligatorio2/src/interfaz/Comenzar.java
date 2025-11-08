@@ -19,7 +19,8 @@ public class Comenzar extends javax.swing.JFrame {
         btnSisGuardado = new javax.swing.JButton();
         btnSisCargado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Comenzar");
         setResizable(false);
         getContentPane().setLayout(null);
 
