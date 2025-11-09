@@ -4,7 +4,6 @@ import dominio.*;
 
 public class MgBaja extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MgBaja.class.getName());
 
 
     public MgBaja(Sistema sistema) {

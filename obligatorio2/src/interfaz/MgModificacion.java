@@ -4,7 +4,6 @@ import dominio.*;
 
 public class MgModificacion extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MgModificacion.class.getName());
 
  
     public MgModificacion(Sistema sistema) {
