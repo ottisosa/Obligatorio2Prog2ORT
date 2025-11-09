@@ -73,12 +73,27 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.add(arAlta);
 
         arBaja.setText("Baja");
+        arBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arBajaActionPerformed(evt);
+            }
+        });
         jMenu1.add(arBaja);
 
         arMod.setText("Modificación");
+        arMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arModActionPerformed(evt);
+            }
+        });
         jMenu1.add(arMod);
 
         arMov.setText("Realizar Movimiento");
+        arMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arMovActionPerformed(evt);
+            }
+        });
         jMenu1.add(arMov);
 
         jMenuBar1.add(jMenu1);
@@ -86,12 +101,27 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setText("Managers");
 
         mgAlta.setText("Alta");
+        mgAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mgAltaActionPerformed(evt);
+            }
+        });
         jMenu2.add(mgAlta);
 
         mgBaja.setText("Baja");
+        mgBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mgBajaActionPerformed(evt);
+            }
+        });
         jMenu2.add(mgBaja);
 
         mgMod.setText("Modificación");
+        mgMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mgModActionPerformed(evt);
+            }
+        });
         jMenu2.add(mgMod);
 
         jMenuBar1.add(jMenu2);
@@ -99,6 +129,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setText("Empleados");
 
         empAlta.setText("Alta");
+        empAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empAltaActionPerformed(evt);
+            }
+        });
         jMenu3.add(empAlta);
 
         jMenuBar1.add(jMenu3);
@@ -106,12 +141,27 @@ public class Menu extends javax.swing.JFrame {
         jMenu4.setText("Reportes");
 
         repInt.setText("Reporte Inteligente");
+        repInt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repIntActionPerformed(evt);
+            }
+        });
         jMenu4.add(repInt);
 
         repAr.setText("Reporte de estado de áreas");
+        repAr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repArActionPerformed(evt);
+            }
+        });
         jMenu4.add(repAr);
 
         repMov.setText("Reporte de movimientos");
+        repMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repMovActionPerformed(evt);
+            }
+        });
         jMenu4.add(repMov);
 
         jMenuBar1.add(jMenu4);
@@ -133,6 +183,56 @@ public class Menu extends javax.swing.JFrame {
         AreasAlta vent = new AreasAlta();
         vent.setVisible(true);
     }//GEN-LAST:event_arAltaActionPerformed
+
+    private void arBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arBajaActionPerformed
+        AreasBaja vent = new AreasBaja();
+        vent.setVisible(true);
+    }//GEN-LAST:event_arBajaActionPerformed
+
+    private void arModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arModActionPerformed
+        AreasModificacion vent = new AreasModificacion();
+        vent.setVisible(true);
+    }//GEN-LAST:event_arModActionPerformed
+
+    private void arMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arMovActionPerformed
+        AreasMovimiento vent = new AreasMovimiento();
+        vent.setVisible(true);
+    }//GEN-LAST:event_arMovActionPerformed
+
+    private void mgAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgAltaActionPerformed
+        MgAlta vent = new MgAlta();
+        vent.setVisible(true);
+    }//GEN-LAST:event_mgAltaActionPerformed
+
+    private void mgBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgBajaActionPerformed
+        MgBaja vent = new MgBaja();
+        vent.setVisible(true);
+    }//GEN-LAST:event_mgBajaActionPerformed
+
+    private void mgModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgModActionPerformed
+        MgModificacion vent = new MgModificacion();
+        vent.setVisible(true);
+    }//GEN-LAST:event_mgModActionPerformed
+
+    private void empAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAltaActionPerformed
+        EmpAlta vent = new EmpAlta();
+        vent.setVisible(true);
+    }//GEN-LAST:event_empAltaActionPerformed
+
+    private void repIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repIntActionPerformed
+        RepInteligente vent = new RepInteligente();
+        vent.setVisible(true);
+    }//GEN-LAST:event_repIntActionPerformed
+
+    private void repArActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repArActionPerformed
+        RepAreas vent = new RepAreas();
+        vent.setVisible(true);
+    }//GEN-LAST:event_repArActionPerformed
+
+    private void repMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repMovActionPerformed
+        RepMovimientos vent = new RepMovimientos();
+        vent.setVisible(true);
+    }//GEN-LAST:event_repMovActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
