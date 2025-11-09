@@ -1,15 +1,16 @@
 
 package interfaz;
-
+import dominio.*;
 
 public class MgAlta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MgAlta.class.getName());
 
 
-    public MgAlta() {
+    public MgAlta(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
     }
 
 
@@ -144,4 +145,5 @@ public class MgAlta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }
