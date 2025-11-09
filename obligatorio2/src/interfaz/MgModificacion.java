@@ -31,10 +31,9 @@ public class MgModificacion extends javax.swing.JFrame {
         jTextPane1 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextPane4 = new javax.swing.JTextPane();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -85,9 +84,9 @@ public class MgModificacion extends javax.swing.JFrame {
         jPanel1.add(jLabel5);
         jLabel5.setBounds(220, 70, 70, 25);
 
-        jButton1.setBackground(new java.awt.Color(102, 0, 0));
+        jButton1.setBackground(new java.awt.Color(0, 0, 102));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Eliminar");
+        jButton1.setText("Modificar");
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,14 +112,6 @@ public class MgModificacion extends javax.swing.JFrame {
         jPanel1.add(jScrollPane3);
         jScrollPane3.setBounds(320, 190, 180, 30);
 
-        jTextPane3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextPane3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jTextPane3.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane4.setViewportView(jTextPane3);
-
-        jPanel1.add(jScrollPane4);
-        jScrollPane4.setBounds(320, 250, 180, 30);
-
         jTextPane4.setBackground(new java.awt.Color(255, 255, 255));
         jTextPane4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         jTextPane4.setForeground(new java.awt.Color(0, 0, 0));
@@ -128,6 +119,12 @@ public class MgModificacion extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane5);
         jScrollPane5.setBounds(320, 70, 180, 30);
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(320, 250, 180, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,11 +168,11 @@ public class MgModificacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }
