@@ -7,6 +7,7 @@ public class AreasAlta extends javax.swing.JFrame {
 
     public AreasAlta() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
 
