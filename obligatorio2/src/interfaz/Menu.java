@@ -1,4 +1,5 @@
 package interfaz;
+import dominio.*;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 import javax.swing.*;
@@ -6,10 +7,10 @@ import javax.swing.*;
 public class Menu extends javax.swing.JFrame {
 
     
-    public Menu() {
+    public Menu(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        this.modelo=sistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -64,6 +65,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setText("Areas");
 
         arAlta.setText("Alta");
+        arAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arAltaActionPerformed(evt);
+            }
+        });
         jMenu1.add(arAlta);
 
         arBaja.setText("Baja");
@@ -123,6 +129,11 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formKeyPressed
 
+    private void arAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arAltaActionPerformed
+        AreasAlta vent = new AreasAlta();
+        vent.setVisible(true);
+    }//GEN-LAST:event_arAltaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem arAlta;
@@ -143,4 +154,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem repInt;
     private javax.swing.JMenuItem repMov;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }

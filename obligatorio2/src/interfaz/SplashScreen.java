@@ -1,10 +1,12 @@
 
 package interfaz;
+import dominio.*;
 
 public class SplashScreen extends javax.swing.JFrame {
     
-    public SplashScreen() {
+    public SplashScreen(Sistema sistema) {
         initComponents();
+        this.modelo = sistema;
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         try{
@@ -14,7 +16,7 @@ public class SplashScreen extends javax.swing.JFrame {
         }
         this.dispose();
         
-        Comenzar com = new Comenzar();
+        Comenzar com = new Comenzar(this.modelo);
         com.setVisible(true);
         
     }
@@ -41,4 +43,5 @@ public class SplashScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }

@@ -4,9 +4,10 @@ import dominio.*;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 public class Comenzar extends javax.swing.JFrame {
 
-    public Comenzar() {
+    public Comenzar(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -108,21 +109,21 @@ public class Comenzar extends javax.swing.JFrame {
 
     private void btnSisNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisNuevoActionPerformed
 
-        Menu men = new Menu();
+        Menu men = new Menu(this.modelo);
         this.dispose();
         men.setVisible(true);
     }//GEN-LAST:event_btnSisNuevoActionPerformed
 
     private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
 
-        Menu men = new Menu();
+        Menu men = new Menu(this.modelo);
         this.dispose();
         men.setVisible(true);
     }//GEN-LAST:event_btnSisGuardadoActionPerformed
 
     private void btnSisCargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisCargadoActionPerformed
 
-        Menu men = new Menu();
+        Menu men = new Menu(this.modelo);
         this.dispose();
         men.setVisible(true);
         Area per = new Area("Personal","Reclutamiento de personal, promociones, gestión de cargos",100000);
@@ -145,4 +146,5 @@ public class Comenzar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }

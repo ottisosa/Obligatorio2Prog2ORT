@@ -10,7 +10,8 @@ public class Obligatorio2 {
    
     public static void main(String[] args) {
         
-        SplashScreen splash = new SplashScreen();
+        Sistema sistema = new Sistema();
+        SplashScreen splash = new SplashScreen(sistema);
     
     }
     
