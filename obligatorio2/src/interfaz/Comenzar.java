@@ -130,15 +130,15 @@ public class Comenzar extends javax.swing.JFrame {
         Menu men = new Menu(this.modelo);
         this.dispose();
         men.setVisible(true);
-        Area per = new Area("Personal","Reclutamiento de personal, promociones, gestión de cargos",100000);
-        Area RRHH = new Area("RRHH","Relacionamiento en la empresa, organigrama, gestión de equipo",80000);
-        Area seg = new Area("Seguridad","Seguridad física, vigilancia, seguridad informática, protocolos y políticas de seguridad",120000);
-        Area com = new Area("Comunicaciones","Comunicaciones internas, reglas y protocolos, comunicaciones con proveedores y clientes",20000);
-        Area mark = new Area("Marketing","Acciones planificadas, publicidad en medios masivos, publicidad en redes, gestión de redes",95000);
-        Manager man1 = new Manager(10,"Ana Martinez","4.568.369-1","099123456");
-        Manager man2 = new Manager(4,"Ricardo Morales","3.214.589-3","094121212");
-        Manager man3 = new Manager(1,"Laura Torales","3.589.257-5","099654321");
-        Manager man4 = new Manager(5,"Juan Pablo Zapata","4.555.197-7","099202020");
+        Area per = new Area("Personal","Reclutamiento de personal, promociones, gestión de cargos",100000, this.modelo);
+        Area RRHH = new Area("RRHH","Relacionamiento en la empresa, organigrama, gestión de equipo",80000, this.modelo);
+        Area seg = new Area("Seguridad","Seguridad física, vigilancia, seguridad informática, protocolos y políticas de seguridad",120000, this.modelo);
+        Area com = new Area("Comunicaciones","Comunicaciones internas, reglas y protocolos, comunicaciones con proveedores y clientes",20000, this.modelo);
+        Area mark = new Area("Marketing","Acciones planificadas, publicidad en medios masivos, publicidad en redes, gestión de redes",95000, this.modelo);
+        Manager man1 = new Manager(10,"Ana Martinez","4.568.369-1","099123456", this.modelo);
+        Manager man2 = new Manager(4,"Ricardo Morales","3.214.589-3","094121212", this.modelo);
+        Manager man3 = new Manager(1,"Laura Torales","3.589.257-5","099654321", this.modelo);
+        Manager man4 = new Manager(5,"Juan Pablo Zapata","4.555.197-7","099202020", this.modelo);
         
     }//GEN-LAST:event_btnSisCargadoActionPerformed
 

@@ -6,11 +6,14 @@ public class Area implements Comparable<Area> {
     private String nombre;
     private String descripcion;
     private int presupuesto;
+    private Sistema modelo;
 
-    public Area(String nombre, String descripcion, int presupuesto) {
+    public Area(String nombre, String descripcion, int presupuesto, Sistema sistema) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.presupuesto = presupuesto;
+        this.modelo = sistema;
+        this.modelo.addListaAreas(this);
     }
 
     public String getNombre() {

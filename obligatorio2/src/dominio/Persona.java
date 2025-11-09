@@ -6,11 +6,14 @@ public abstract class Persona {
     protected String nombre;
     protected String ci;
     protected String celular;
+    protected Sistema modelo;
 
-    public Persona(String nombre, String ci, String celular) {
+    public Persona(String nombre, String ci, String celular, Sistema sistema) {
         this.nombre = nombre;
         this.ci = ci;
         this.celular = celular;
+        this.modelo = sistema;
+        this.modelo.addListaPersonas(this);
     }
     
     public String getNombre() {

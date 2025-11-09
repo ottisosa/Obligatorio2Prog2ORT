@@ -28,32 +28,32 @@ public class Sistema {
         return listaPersonas;
     }
 
-    public void setListaPersonas(ArrayList<Persona> listaPersonas) {
-        this.listaPersonas = listaPersonas;
+    public void addListaPersonas(Persona persona) {
+        this.listaPersonas.add(persona);
     }
 
     public ArrayList<Empleado> getListaEmpleados() {
         return listaEmpleados;
     }
 
-    public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
-        this.listaEmpleados = listaEmpleados;
+    public void addListaEmpleados(Empleado empleado) {
+        this.listaEmpleados.add(empleado);
     }
 
     public ArrayList<Manager> getListaManagers() {
         return listaManagers;
     }
 
-    public void setListaManagers(ArrayList<Manager> listaManagers) {
-        this.listaManagers = listaManagers;
+    public void addListaManagers(Manager manager) {
+        this.listaManagers.add(manager);
     }
 
     public ArrayList<Area> getListaAreas() {
         return listaAreas;
     }
 
-    public void setListaAreas(ArrayList<Area> listaAreas) {
-        this.listaAreas = listaAreas;
+    public void addListaAreas(Area area) {
+        this.listaAreas.add(area);
     }
 
     public void ordenarAreaPorNombre() {

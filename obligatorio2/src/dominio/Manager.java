@@ -5,8 +5,8 @@ package dominio;
 public class Manager extends Persona{
     private int antiguedad;
 
-    public Manager(int antiguedad, String nombre, String ci, String celular) {
-        super(nombre, ci, celular);
+    public Manager(int antiguedad, String nombre, String ci, String celular, Sistema sistema) {
+        super(nombre, ci, celular, sistema);
         this.antiguedad = antiguedad;
     }
     
