@@ -12,13 +12,14 @@ public class AreasAlta extends javax.swing.JFrame {
 
     }
 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaAreas = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -35,16 +36,16 @@ public class AreasAlta extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
 
-        jList1.setBackground(new java.awt.Color(255, 255, 255));
-        jList1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jList1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaAreas.setBackground(new java.awt.Color(255, 255, 255));
+        listaAreas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        listaAreas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        listaAreas.setForeground(new java.awt.Color(0, 0, 0));
+        listaAreas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaAreas);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,12 +160,12 @@ public class AreasAlta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JList<String> listaAreas;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }

@@ -1,8 +1,8 @@
 package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
 public class Area {
+
     private String nombre;
     private String descripcion;
     private int presupuesto;
@@ -12,7 +12,7 @@ public class Area {
         this.descripcion = descripcion;
         this.presupuesto = presupuesto;
     }
-        
+
     public String getNombre() {
         return nombre;
     }
@@ -36,4 +36,6 @@ public class Area {
     public void setPresupuesto(int presupuesto) {
         this.presupuesto = presupuesto;
     }
+
+
 }

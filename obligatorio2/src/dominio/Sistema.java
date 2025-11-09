@@ -62,10 +62,12 @@ public class Sistema {
 
     }
 
+
     private class criterioNombre implements Comparator<Area> {
 
         @Override
         public int compare(Area area1, Area area2) {
+            
             return area1.getNombre().toUpperCase().compareTo(area2.getNombre().toUpperCase());
         }
     }
