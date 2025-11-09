@@ -29,6 +29,7 @@ public class Comenzar extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Eliga una opcion");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setName(""); // NOI18N
@@ -38,7 +39,8 @@ public class Comenzar extends javax.swing.JFrame {
         btnSisNuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnSisNuevo.setText("Sistema nuevo");
         btnSisNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        btnSisNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSisNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSisNuevo.setFocusPainted(false);
         btnSisNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSisNuevoActionPerformed(evt);
@@ -50,7 +52,8 @@ public class Comenzar extends javax.swing.JFrame {
         btnSisGuardado.setForeground(new java.awt.Color(255, 255, 255));
         btnSisGuardado.setText("Sistema guardado");
         btnSisGuardado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        btnSisGuardado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSisGuardado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSisGuardado.setFocusPainted(false);
         btnSisGuardado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSisGuardadoActionPerformed(evt);
@@ -62,7 +65,8 @@ public class Comenzar extends javax.swing.JFrame {
         btnSisCargado.setForeground(new java.awt.Color(255, 255, 255));
         btnSisCargado.setText("Sistema con datos precargados");
         btnSisCargado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        btnSisCargado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSisCargado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSisCargado.setFocusPainted(false);
         btnSisCargado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSisCargadoActionPerformed(evt);
