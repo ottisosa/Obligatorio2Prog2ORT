@@ -1,15 +1,16 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+import dominio.*;
 
 public class AreasModificacion extends javax.swing.JFrame {
 
-    public AreasModificacion() {
+    public AreasModificacion(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        modelo = sistema;
 
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -175,4 +176,5 @@ public class AreasModificacion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+private Sistema modelo;
 }

@@ -1,14 +1,16 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+import dominio.*;
 
 public class AreasBaja extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AreasBaja.class.getName());
 
-    public AreasBaja() {
+    public AreasBaja(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
 
     }
 
@@ -120,7 +122,6 @@ public class AreasBaja extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -130,4 +131,6 @@ public class AreasBaja extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
+
 }

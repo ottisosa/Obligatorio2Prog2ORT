@@ -1,13 +1,17 @@
-
 package interfaz;
+
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+import dominio.*;
 
 public class EmpAlta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EmpAlta.class.getName());
 
-    public EmpAlta() {
+    public EmpAlta(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
     }
 
 
@@ -36,4 +40,5 @@ public class EmpAlta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+private Sistema modelo;
 }

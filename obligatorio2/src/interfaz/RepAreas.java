@@ -1,14 +1,17 @@
-
 package interfaz;
+
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+import dominio.*;
+
 
 public class RepAreas extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RepAreas.class.getName());
 
-
-    public RepAreas() {
+    public RepAreas(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
     }
 
     @SuppressWarnings("unchecked")
@@ -35,4 +38,5 @@ public class RepAreas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+private Sistema modelo;
 }

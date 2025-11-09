@@ -1,15 +1,15 @@
-
 package interfaz;
 
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+import dominio.*;
 
 public class RepMovimientos extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RepMovimientos.class.getName());
-
-
-    public RepMovimientos() {
+    public RepMovimientos(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
     }
 
 
@@ -37,4 +37,5 @@ public class RepMovimientos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+private Sistema modelo;
 }

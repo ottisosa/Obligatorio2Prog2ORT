@@ -1,16 +1,17 @@
-
 package interfaz;
 
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+import dominio.*;
 
 public class RepInteligente extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RepInteligente.class.getName());
 
-
-    public RepInteligente() {
+    public RepInteligente(Sistema sistema) {
         initComponents();
-    }
 
+        this.modelo = sistema;
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,7 +34,7 @@ public class RepInteligente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+private Sistema modelo;
 }

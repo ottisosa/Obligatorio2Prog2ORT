@@ -1,12 +1,14 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+import dominio.*;
 
 public class AreasMovimiento extends javax.swing.JFrame {
 
-    public AreasMovimiento() {
+    public AreasMovimiento(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.modelo = sistema;
 
     }
 
@@ -176,4 +178,5 @@ public class AreasMovimiento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+private Sistema modelo;
 }
