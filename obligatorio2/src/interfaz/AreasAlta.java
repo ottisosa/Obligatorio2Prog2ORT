@@ -1,15 +1,16 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+import dominio.*;
 
 public class AreasAlta extends javax.swing.JFrame {
-    
 
-    public AreasAlta() {
+    public AreasAlta(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
-    }
+        this.modelo = sistema;
 
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -152,7 +153,6 @@ public class AreasAlta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -166,4 +166,5 @@ public class AreasAlta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }

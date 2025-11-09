@@ -180,57 +180,57 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void arAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arAltaActionPerformed
-        AreasAlta vent = new AreasAlta();
+        AreasAlta vent = new AreasAlta(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_arAltaActionPerformed
 
     private void arBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arBajaActionPerformed
-        AreasBaja vent = new AreasBaja();
+        AreasBaja vent = new AreasBaja(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_arBajaActionPerformed
 
     private void arModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arModActionPerformed
-        AreasModificacion vent = new AreasModificacion();
+        AreasModificacion vent = new AreasModificacion(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_arModActionPerformed
 
     private void arMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arMovActionPerformed
-        AreasMovimiento vent = new AreasMovimiento();
+        AreasMovimiento vent = new AreasMovimiento(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_arMovActionPerformed
 
     private void mgAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgAltaActionPerformed
-        MgAlta vent = new MgAlta();
+        MgAlta vent = new MgAlta(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_mgAltaActionPerformed
 
     private void mgBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgBajaActionPerformed
-        MgBaja vent = new MgBaja();
+        MgBaja vent = new MgBaja(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_mgBajaActionPerformed
 
     private void mgModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mgModActionPerformed
-        MgModificacion vent = new MgModificacion();
+        MgModificacion vent = new MgModificacion(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_mgModActionPerformed
 
     private void empAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAltaActionPerformed
-        EmpAlta vent = new EmpAlta();
+        EmpAlta vent = new EmpAlta(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_empAltaActionPerformed
 
     private void repIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repIntActionPerformed
-        RepInteligente vent = new RepInteligente();
+        RepInteligente vent = new RepInteligente(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_repIntActionPerformed
 
     private void repArActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repArActionPerformed
-        RepAreas vent = new RepAreas();
+        RepAreas vent = new RepAreas(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_repArActionPerformed
 
     private void repMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repMovActionPerformed
-        RepMovimientos vent = new RepMovimientos();
+        RepMovimientos vent = new RepMovimientos(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_repMovActionPerformed
 

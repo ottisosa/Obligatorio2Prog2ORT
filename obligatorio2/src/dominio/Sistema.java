@@ -1,11 +1,10 @@
 package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
 import java.util.*;
 
-
 public class Sistema {
+
     private ArrayList<Persona> listaPersonas;
     private ArrayList<Empleado> listaEmpleados;
     private ArrayList<Manager> listaManagers;
@@ -24,9 +23,7 @@ public class Sistema {
         this.listaManagers = new ArrayList<>();
         this.listaAreas = new ArrayList<>();
     }
-    
-    
-    
+
     public ArrayList<Persona> getListaPersonas() {
         return listaPersonas;
     }
@@ -57,5 +54,19 @@ public class Sistema {
 
     public void setListaAreas(ArrayList<Area> listaAreas) {
         this.listaAreas = listaAreas;
+    }
+
+    public void ordenarAreaPorNombre() {
+
+        Collections.sort(listaAreas, new criterioNombre());
+
+    }
+
+    private class criterioNombre implements Comparator<Area> {
+
+        @Override
+        public int compare(Area area1, Area area2) {
+            return area1.getNombre().toUpperCase().compareTo(area2.getNombre().toUpperCase());
+        }
     }
 }
