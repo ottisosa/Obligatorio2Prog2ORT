@@ -58,17 +58,9 @@ public class Sistema {
 
     public void ordenarAreaPorNombre() {
 
-        Collections.sort(listaAreas, new criterioNombre());
+        Collections.sort(listaAreas);
 
     }
 
 
-    private class criterioNombre implements Comparator<Area> {
-
-        @Override
-        public int compare(Area area1, Area area2) {
-            
-            return area1.getNombre().toUpperCase().compareTo(area2.getNombre().toUpperCase());
-        }
-    }
 }
