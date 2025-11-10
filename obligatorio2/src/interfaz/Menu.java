@@ -174,9 +174,8 @@ public class Menu extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
 
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
-            JOptionPane.showMessageDialog(null, "Autores: Santiago Quintana (327886), Octavio Sosa (363131)");
+            JOptionPane.showMessageDialog(null, "Autores: \nSantiago Quintana (327886), 19 años, SQ327886@fi365.ort.edu.uy\nOctavio Sosa (363131), 20 años, OS363131@fi365.ort.edu.uy");
         }
-
     }//GEN-LAST:event_formKeyPressed
 
     private void arAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arAltaActionPerformed
