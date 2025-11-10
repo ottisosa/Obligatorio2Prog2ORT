@@ -25,7 +25,6 @@ public class AreasAlta extends javax.swing.JFrame {
         int Presupuesto = Integer.parseInt(txtPros.getText());;
 
         Area area = new Area(Nombre, Descrip, Presupuesto, modelo);
-        modelo.addListaAreas(area);
 
         txtNom.setText("");
         txtDescrip.setText("");
