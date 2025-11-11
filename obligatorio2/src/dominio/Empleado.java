@@ -12,6 +12,8 @@ public class Empleado extends Persona{
         this.salario = salario;
         this.manager = manager;
         this.area = area;
+        
+        this.modelo.addListaEmpleados(this);
     }
     
     public int getSalario() {

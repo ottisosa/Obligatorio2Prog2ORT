@@ -1,6 +1,7 @@
-package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+package dominio;
 public class Area implements Comparable<Area> {
 
     private String nombre;
@@ -40,6 +41,12 @@ public class Area implements Comparable<Area> {
         this.presupuesto = presupuesto;
     }
 
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+    
+    
     @Override
     
     // criterio por defecto para ordenar por nombre

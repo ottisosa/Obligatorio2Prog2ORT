@@ -1,7 +1,9 @@
 package interfaz;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
 import dominio.*;
+import javax.swing.JOptionPane;
 
 public class AreasAlta extends javax.swing.JFrame {
 
@@ -9,27 +11,40 @@ public class AreasAlta extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
-        cargarLista();
+        this.cargarLista();
     }
 
     public void cargarLista() {
-
-        listaAreas.setListData(modelo.getListaAreas().toArray());
-
+        this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
     }
 
     public void agregarArea() {
+        if ((!this.txtNom.getText().equals("")) && (!this.txtDescrip.getText().equals("")) && (!this.txtPres.getText().equals(""))){
+            if (!this.modelo.verificarNombreArea(this.txtNom.getText())){
+                try{
+                    String Nombre = this.txtNom.getText();
+                    String Descrip = this.txtDescrip.getText();
+                    int Presupuesto = Integer.parseInt(this.txtPres.getText());;
 
-        String Nombre = txtNom.getText();
-        String Descrip = txtDescrip.getText();
-        int Presupuesto = Integer.parseInt(txtPros.getText());;
+                    Area area = new Area(Nombre, Descrip, Presupuesto, this.modelo);
 
-        Area area = new Area(Nombre, Descrip, Presupuesto, modelo);
+                    this.txtNom.setText("");
+                    this.txtDescrip.setText("");
+                    this.txtPres.setText("");
 
-        txtNom.setText("");
-        txtDescrip.setText("");
-        txtPros.setText("");
-
+                    this.cargarLista();
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "Presupuesto debe ser un número", "ERROR", 0);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Area con el nombre ya existe", "ERROR", 0);                
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Complete los campos para agregar un area", "ERROR", 0);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -45,7 +60,7 @@ public class AreasAlta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtDescrip = new javax.swing.JTextField();
-        txtPros = new javax.swing.JTextField();
+        txtPres = new javax.swing.JTextField();
         btnAregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -54,6 +69,7 @@ public class AreasAlta extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
+        jPanel1.setLayout(null);
 
         listaAreas.setBackground(new java.awt.Color(255, 255, 255));
         listaAreas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -66,39 +82,56 @@ public class AreasAlta extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaAreas);
 
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(23, 80, 154, 247);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Áreas:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(42, 30, 79, 32);
 
         txtNom.setBackground(new java.awt.Color(255, 255, 255));
         txtNom.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNom.setForeground(new java.awt.Color(0, 0, 0));
         txtNom.setToolTipText("");
         txtNom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtNom);
+        txtNom.setBounds(339, 92, 200, 29);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(225, 89, 70, 30);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descripcion:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(225, 155, 96, 30);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Presupuesto:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(225, 225, 102, 30);
 
         txtDescrip.setBackground(new java.awt.Color(255, 255, 255));
         txtDescrip.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtDescrip.setForeground(new java.awt.Color(0, 0, 0));
         txtDescrip.setToolTipText("");
         txtDescrip.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtDescrip);
+        txtDescrip.setBounds(339, 158, 200, 29);
 
-        txtPros.setBackground(new java.awt.Color(255, 255, 255));
-        txtPros.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtPros.setForeground(new java.awt.Color(0, 0, 0));
-        txtPros.setToolTipText("");
-        txtPros.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        txtPres.setBackground(new java.awt.Color(255, 255, 255));
+        txtPres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPres.setForeground(new java.awt.Color(0, 0, 0));
+        txtPres.setToolTipText("");
+        txtPres.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPres);
+        txtPres.setBounds(339, 228, 200, 29);
 
         btnAregar.setBackground(new java.awt.Color(0, 102, 51));
         btnAregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -112,65 +145,8 @@ public class AreasAlta extends javax.swing.JFrame {
                 btnAregarActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(44, 44, 44)
-                                .addComponent(txtNom))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDescrip))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPros, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(61, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAregar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(112, 112, 112))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addComponent(btnAregar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
+        jPanel1.add(btnAregar);
+        btnAregar.setBounds(380, 283, 129, 39);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 600, 380);
@@ -179,9 +155,7 @@ public class AreasAlta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAregarActionPerformed
-
         agregarArea();
-
     }//GEN-LAST:event_btnAregarActionPerformed
 
 
@@ -196,7 +170,7 @@ public class AreasAlta extends javax.swing.JFrame {
     private javax.swing.JList listaAreas;
     private javax.swing.JTextField txtDescrip;
     private javax.swing.JTextField txtNom;
-    private javax.swing.JTextField txtPros;
+    private javax.swing.JTextField txtPres;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
 }

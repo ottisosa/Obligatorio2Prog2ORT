@@ -1,9 +1,10 @@
-package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+package dominio;
 import java.util.*;
 
-public class Sistema {
+public class Sistema extends Observable{
 
     private ArrayList<Persona> listaPersonas;
     private ArrayList<Empleado> listaEmpleados;
@@ -47,6 +48,10 @@ public class Sistema {
     public void addListaManagers(Manager manager) {
         this.listaManagers.add(manager);
     }
+    
+    public void eliminarListaManagers(Manager manager){
+        this.listaManagers.remove(manager);
+    }
 
     public ArrayList<Area> getListaAreas() {
         return listaAreas;
@@ -55,11 +60,40 @@ public class Sistema {
     public void addListaAreas(Area area) {
         this.listaAreas.add(area);
     }
+    
+    public void eliminarListaAreas(Area area){
+        this.listaAreas.remove(area);
+    }
+    
+    public boolean verificarNombreArea(String nombre){
+        boolean esta=false;
+        for (int i = 0; i < this.listaAreas.size(); i++) {
+            if(this.listaAreas.get(i).getNombre().equals(nombre)){
+                esta=true;
+            }
+        }
+        return esta;
+    }
+    
+    public ArrayList<Area> getListaAreasSinEmp() {
+        ArrayList<Area> arSinEmp = new ArrayList<>();
+        for (int i = 0; i < this.listaAreas.size(); i++) {
+            boolean esta=false;
+            for (int j = 0; j < this.listaEmpleados.size(); j++) {
+                if(this.listaAreas.get(i)==this.listaEmpleados.get(j).getArea()){
+                    esta=true;
+                }
+            }
+            if(!esta){
+                arSinEmp.add(this.listaAreas.get(i));
+            }
+        }
+        return arSinEmp;
+    }
+    
 
     public void ordenarAreaPorNombre() {
-
         Collections.sort(listaAreas);
-
     }
 
 

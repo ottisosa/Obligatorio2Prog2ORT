@@ -8,6 +8,8 @@ public class Manager extends Persona{
     public Manager(int antiguedad, String nombre, String ci, String celular, Sistema sistema) {
         super(nombre, ci, celular, sistema);
         this.antiguedad = antiguedad;
+        
+        this.modelo.addListaManagers(this);
     }
     
     public int getAntiguedad() {
