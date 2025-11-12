@@ -42,7 +42,7 @@ public class MgAlta extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cel:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(260, 250, 30, 25);
+        jLabel1.setBounds(240, 250, 50, 25);
 
         jList1.setBackground(new java.awt.Color(255, 255, 255));
         jList1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -73,13 +73,13 @@ public class MgAlta extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CI:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(270, 130, 20, 25);
+        jLabel4.setBounds(260, 130, 30, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(220, 70, 70, 25);
+        jLabel5.setBounds(200, 70, 90, 25);
 
         jTextField4.setBackground(new java.awt.Color(255, 255, 255));
         jTextField4.setForeground(new java.awt.Color(0, 0, 0));

@@ -59,7 +59,7 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(200, 110, 71, 25);
+        jLabel4.setBounds(200, 110, 110, 25);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,13 +111,13 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descripcion:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(200, 170, 100, 25);
+        jLabel5.setBounds(200, 170, 120, 25);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Presupuesto:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(200, 230, 105, 25);
+        jLabel6.setBounds(200, 230, 120, 25);
 
         textoNom.setBackground(new java.awt.Color(255, 255, 255));
         textoNom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
