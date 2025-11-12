@@ -23,22 +23,20 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
     }
 
     public void modificarArea() {
-        if ((!this.txtNom.getText().equals("")) && (!this.txtDescrip.getText().equals("")) && (!this.txtPros.getText().equals(""))) {
+        if (!this.txtDescrip.getText().equals("")) {
 
-   
-                String nuevaDescrip = this.txtDescrip.getText();
+            String nuevaDescrip = this.txtDescrip.getText();
 
-                    this.areaAModificar.setDescripcion(nuevaDescrip);
+            this.areaAModificar.setDescripcion(nuevaDescrip);
 
-                    this.modelo.modificacionArea();
+            this.modelo.modificacionArea();
 
-                    this.txtNom.setText("");
-                    this.txtDescrip.setText("");
-                    this.txtPros.setText("");
+            this.txtNom.setText("");
+            this.txtDescrip.setText("");
+            this.txtPros.setText("");
 
-                    this.cargarLista();
+            this.cargarLista();
 
-                    
         } else {
             JOptionPane.showMessageDialog(null, "Complete los campos para Modificar un area", "ERROR", 0);
         }
@@ -139,6 +137,7 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
         txtPros.setForeground(new java.awt.Color(0, 0, 0));
         txtPros.setToolTipText("");
         txtPros.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        txtPros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(txtPros);
         txtPros.setBounds(340, 200, 230, 29);
 
@@ -148,11 +147,17 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
         txtNom.setForeground(new java.awt.Color(0, 0, 0));
         txtNom.setToolTipText("");
         txtNom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        txtNom.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(txtNom);
         txtNom.setBounds(340, 80, 230, 29);
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         txtDescrip.setBackground(new java.awt.Color(255, 255, 255));
-        txtDescrip.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        txtDescrip.setBorder(null);
         txtDescrip.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jScrollPane2.setViewportView(txtDescrip);
 
@@ -175,19 +180,26 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 
-        modificarArea();
+        if (this.listaAreas.getSelectedValue() != null) {
+
+            modificarArea();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un area a modificar", "ERROR", 0);
+        }
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged
 
-        if (this.listaAreas.getSelectedValue() != null) {
+        if(this.listaAreas.getSelectedValue()!=null){
             Area ar = (Area) this.listaAreas.getSelectedValue();
             this.areaAModificar = ar;
             this.txtNom.setText(ar.getNombre());
             this.txtDescrip.setText(ar.getDescripcion());
             this.txtPros.setText("" + ar.getPresupuesto());
+
         }
+        
     }//GEN-LAST:event_listaAreasValueChanged
 
 
@@ -206,5 +218,5 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextField txtPros;
     // End of variables declaration//GEN-END:variables
 private Sistema modelo;
-private Area areaAModificar;
+    private Area areaAModificar;
 }
