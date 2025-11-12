@@ -119,6 +119,7 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
         jPanel1.add(jLabel6);
         jLabel6.setBounds(200, 230, 120, 25);
 
+        textoNom.setEditable(false);
         textoNom.setBackground(new java.awt.Color(255, 255, 255));
         textoNom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         textoNom.setForeground(new java.awt.Color(0, 0, 0));
@@ -127,6 +128,7 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(320, 110, 230, 30);
 
+        textoDesc.setEditable(false);
         textoDesc.setBackground(new java.awt.Color(255, 255, 255));
         textoDesc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         textoDesc.setForeground(new java.awt.Color(0, 0, 0));
@@ -135,6 +137,7 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
         jPanel1.add(jScrollPane3);
         jScrollPane3.setBounds(320, 170, 230, 30);
 
+        textoPres.setEditable(false);
         textoPres.setBackground(new java.awt.Color(255, 255, 255));
         textoPres.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         textoPres.setForeground(new java.awt.Color(0, 0, 0));
