@@ -1,10 +1,9 @@
-
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
 package dominio;
+
 import java.util.*;
 
-public class Sistema extends Observable{
+public class Sistema extends Observable {
 
     private ArrayList<Persona> listaPersonas;
     private ArrayList<Empleado> listaEmpleados;
@@ -52,12 +51,14 @@ public class Sistema extends Observable{
     public void addListaManagers(Manager manager) {
         this.listaManagers.add(manager);
         this.setChanged();
-        this.notifyObservers();    }
-    
-    public void eliminarListaManagers(Manager manager){
+        this.notifyObservers();
+    }
+
+    public void eliminarListaManagers(Manager manager) {
         this.listaManagers.remove(manager);
         this.setChanged();
-        this.notifyObservers();    }
+        this.notifyObservers();
+    }
 
     public ArrayList<Area> getListaAreas() {
         this.ordenarAreaPorNombre(this.listaAreas);
@@ -67,44 +68,51 @@ public class Sistema extends Observable{
     public void addListaAreas(Area area) {
         this.listaAreas.add(area);
         this.setChanged();
-        this.notifyObservers();    }
-    
-    public void eliminarListaAreas(Area area){
+        this.notifyObservers();
+    }
+
+    public void eliminarListaAreas(Area area) {
         this.listaAreas.remove(area);
         this.setChanged();
-        this.notifyObservers();    }
-    
-    public boolean verificarNombreArea(String nombre){
-        boolean esta=false;
+        this.notifyObservers();
+    }
+
+    public void modificacionArea() {
+
+        this.setChanged();
+        this.notifyObservers();
+
+    }
+
+    public boolean verificarNombreArea(String nombre) {
+        boolean esta = false;
         for (int i = 0; i < this.listaAreas.size(); i++) {
-            if(this.listaAreas.get(i).getNombre().equals(nombre)){
-                esta=true;
+            if (this.listaAreas.get(i).getNombre().equals(nombre)) {
+                esta = true;
             }
         }
         return esta;
     }
-    
+
     public ArrayList<Area> getListaAreasSinEmp() {
         ArrayList<Area> arSinEmp = new ArrayList<>();
         for (int i = 0; i < this.listaAreas.size(); i++) {
-            boolean esta=false;
+            boolean esta = false;
             for (int j = 0; j < this.listaEmpleados.size(); j++) {
-                if(this.listaAreas.get(i)==this.listaEmpleados.get(j).getArea()){
-                    esta=true;
+                if (this.listaAreas.get(i) == this.listaEmpleados.get(j).getArea()) {
+                    esta = true;
                 }
             }
-            if(!esta){
+            if (!esta) {
                 arSinEmp.add(this.listaAreas.get(i));
             }
         }
         this.ordenarAreaPorNombre(arSinEmp);
         return arSinEmp;
     }
-    
 
     public void ordenarAreaPorNombre(ArrayList<Area> listaArea) {
         Collections.sort(listaArea);
     }
-
 
 }
