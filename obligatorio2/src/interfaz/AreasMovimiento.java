@@ -34,8 +34,16 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
     public void moverEmp(){
         if(this.listaAreas.getSelectedValue()!=null && this.listaAreas2.getSelectedValue()!=null){
             if(!this.comboEmp.getSelectedItem().equals("Sin Empleados")){
-                if(this.calcularSiMovPosible((Empleado)this.comboEmp.getSelectedItem())){
+                int salTotal = this.calcularSalarioTotal((Empleado)this.comboEmp.getSelectedItem());
+                if(salTotal>=0){
                     ((Empleado)this.comboEmp.getSelectedItem()).setArea((Area)this.listaAreas2.getSelectedValue());
+                    ((Area)this.listaAreas2.getSelectedValue()).setPresupuesto(((Area)this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal);
+                    ((Area)this.listaAreas.getSelectedValue()).setPresupuesto(((Area)this.listaAreas.getSelectedValue()).getPresupuesto() + salTotal);
+                    
+                    this.modelo.modificacion();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Presupuesto no es suficiente", "ERROR", 0);
                 }
             }
             else{
@@ -47,20 +55,16 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         }
     }
     
-    public boolean calcularSiMovPosible(Empleado emp){
-        boolean posible = false;
+    public int calcularSalarioTotal(Empleado emp){
+        int salarioTotal = -1;
         int mes = this.comboMes.getSelectedIndex();
         if(mes<0){
             JOptionPane.showMessageDialog(null, "Seleccione el mes de transferencia", "ERROR", 0);
         }
         else{
-            mes++;
-            int salarioTotal = (((Empleado)this.comboEmp.getSelectedItem()).getSalario())*(12-mes);
-            if ((((Area)this.listaAreas2.getSelectedValue()).getPresupuesto()-salarioTotal)>=0){
-                posible = true;
-            }
+            salarioTotal = (((Empleado)this.comboEmp.getSelectedItem()).getSalario())*(12-mes);
         }
-        return posible;
+        return salarioTotal;
     }
     
     @Override

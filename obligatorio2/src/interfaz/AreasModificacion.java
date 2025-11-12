@@ -29,7 +29,7 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
 
             this.areaAModificar.setDescripcion(nuevaDescrip);
 
-            this.modelo.modificacionArea();
+            this.modelo.modificacion();
 
             this.txtNom.setText("");
             this.txtDescrip.setText("");

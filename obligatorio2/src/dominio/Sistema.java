@@ -75,11 +75,9 @@ public class Sistema extends Observable {
         this.notifyObservers();
     }
 
-    public void modificacionArea() {
-
+    public void modificacion() {
         this.setChanged();
         this.notifyObservers();
-
     }
 
     public boolean verificarNombreArea(String nombre) {
