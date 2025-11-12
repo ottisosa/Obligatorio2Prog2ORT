@@ -153,11 +153,10 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         txtDescrip.setBackground(new java.awt.Color(255, 255, 255));
-        txtDescrip.setBorder(null);
         txtDescrip.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jScrollPane2.setViewportView(txtDescrip);
 
