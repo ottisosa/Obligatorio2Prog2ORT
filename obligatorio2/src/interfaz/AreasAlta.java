@@ -111,19 +111,19 @@ public class AreasAlta extends javax.swing.JFrame implements Observer {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(225, 89, 70, 30);
+        jLabel4.setBounds(205, 89, 110, 30);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descripcion:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(225, 155, 96, 30);
+        jLabel5.setBounds(205, 155, 130, 30);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Presupuesto:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(225, 225, 102, 30);
+        jLabel6.setBounds(207, 225, 120, 30);
 
         txtDescrip.setBackground(new java.awt.Color(255, 255, 255));
         txtDescrip.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
