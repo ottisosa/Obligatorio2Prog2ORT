@@ -60,6 +60,7 @@ public class Sistema extends Observable{
         this.notifyObservers();    }
 
     public ArrayList<Area> getListaAreas() {
+        this.ordenarAreaPorNombre(this.listaAreas);
         return listaAreas;
     }
 
@@ -96,12 +97,13 @@ public class Sistema extends Observable{
                 arSinEmp.add(this.listaAreas.get(i));
             }
         }
+        this.ordenarAreaPorNombre(arSinEmp);
         return arSinEmp;
     }
     
 
-    public void ordenarAreaPorNombre() {
-        Collections.sort(listaAreas);
+    public void ordenarAreaPorNombre(ArrayList<Area> listaArea) {
+        Collections.sort(listaArea);
     }
 
 

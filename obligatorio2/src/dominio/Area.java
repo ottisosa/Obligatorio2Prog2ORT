@@ -51,8 +51,8 @@ public class Area implements Comparable<Area> {
     
     // criterio por defecto para ordenar por nombre
     
-    public int compareTo(Area ar1) {
-        return ar1.getNombre().compareTo(this.getNombre());
+    public int compareTo(Area area) {
+        return this.getNombre().toUpperCase().compareTo(area.getNombre().toUpperCase());
     }
 
 }
