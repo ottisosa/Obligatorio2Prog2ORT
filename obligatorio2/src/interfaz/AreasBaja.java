@@ -43,6 +43,7 @@ public class AreasBaja extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar un area");
         setResizable(false);
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
         jPanel1.setLayout(null);
@@ -51,7 +52,7 @@ public class AreasBaja extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(200, 110, 70, 25);
+        jLabel4.setBounds(200, 110, 71, 25);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,13 +104,13 @@ public class AreasBaja extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descripcion:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(200, 170, 96, 25);
+        jLabel5.setBounds(200, 170, 100, 25);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Presupuesto:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(200, 230, 102, 25);
+        jLabel6.setBounds(200, 230, 105, 25);
 
         textoNom.setBackground(new java.awt.Color(255, 255, 255));
         textoNom.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -135,16 +136,8 @@ public class AreasBaja extends javax.swing.JFrame {
         jPanel1.add(jScrollPane4);
         jScrollPane4.setBounds(320, 230, 230, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 610, 390);
 
         setBounds(0, 0, 614, 388);
     }// </editor-fold>//GEN-END:initComponents
@@ -156,9 +149,6 @@ public class AreasBaja extends javax.swing.JFrame {
             this.textoDesc.setText(ar.getDescripcion());
             this.textoPres.setText(""+ar.getPresupuesto());
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Seleccione un area a eliminar", "ERROR", 0);
-        }
     }//GEN-LAST:event_listaAreasValueChanged
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -168,6 +158,9 @@ public class AreasBaja extends javax.swing.JFrame {
             this.textoNom.setText("");
             this.textoDesc.setText("");
             this.textoPres.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccione un area a eliminar", "ERROR", 0);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
