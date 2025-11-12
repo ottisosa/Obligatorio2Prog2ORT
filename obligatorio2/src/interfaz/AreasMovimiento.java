@@ -3,6 +3,7 @@ package interfaz;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 import dominio.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class AreasMovimiento extends javax.swing.JFrame implements Observer{
 
@@ -11,20 +12,61 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
         this.modelo.addObserver(this);
-        this.crearComboMeses();
+        this.cargarListas();
+        this.cargarEmp();
     }
     
-    public void crearComboMeses(){
-        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"};
-        for (int i = 0; i < meses.length; i++) {
-            this.comboMes.addItem(meses[i]);
+    public void cargarListas(){
+        this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
+        this.listaAreas2.setListData(this.modelo.getListaAreas().toArray());
+    }
+    
+    public void cargarEmp(){
+        ArrayList<Empleado> listaEmp = this.modelo.getListaEmpleados();
+        if(!listaEmp.isEmpty()){
+            this.comboEmp.removeAllItems();
+            for (int i = 0; i < listaEmp.size(); i++) {
+                this.comboEmp.addItem(listaEmp.get(i));
+            }
         }
-        
+    }
+    
+    public void moverEmp(){
+        if(this.listaAreas.getSelectedValue()!=null && this.listaAreas2.getSelectedValue()!=null){
+            if(!this.comboEmp.getSelectedItem().equals("Sin Empleados")){
+                if(this.calcularSiMovPosible((Empleado)this.comboEmp.getSelectedItem())){
+                    
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Seleccione empleado a transferir", "ERROR", 0);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccione areas de origen y transferencia", "ERROR", 0);
+        }
+    }
+    
+    public boolean calcularSiMovPosible(Empleado emp){
+        boolean posible = false;
+        int mes = this.comboMes.getSelectedIndex();
+        if(mes<0){
+            JOptionPane.showMessageDialog(null, "Seleccione el mes de transferencia", "ERROR", 0);
+        }
+        else{
+            mes++;
+            int salarioTotal = (((Empleado)this.comboEmp.getSelectedItem()).getSalario())*(12-mes);
+            if ((((Area)this.listaAreas2.getSelectedValue()).getPresupuesto()-salarioTotal)>=0){
+                posible = true;
+            }
+        }
+        return posible;
     }
     
     @Override
     public void update(Observable o, Object arg){
-        
+        this.cargarListas();
+        this.cargarEmp();
     }
 
     @SuppressWarnings("unchecked")
@@ -35,13 +77,13 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         comboMes = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listaAreas = new javax.swing.JList();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        comboEmp = new javax.swing.JComboBox<>();
+        comboEmp = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        listaAreas2 = new javax.swing.JList();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -55,7 +97,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         comboMes.setBackground(new java.awt.Color(255, 255, 255));
         comboMes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboMes.setForeground(new java.awt.Color(0, 0, 0));
-        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre", " " }));
+        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         comboMes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboMes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(comboMes);
@@ -67,16 +109,16 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         jPanel1.add(jLabel1);
         jLabel1.setBounds(29, 126, 154, 32);
 
-        jList1.setBackground(new java.awt.Color(255, 255, 255));
-        jList1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jList1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        listaAreas.setBackground(new java.awt.Color(255, 255, 255));
+        listaAreas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        listaAreas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        listaAreas.setForeground(new java.awt.Color(0, 0, 0));
+        listaAreas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaAreas);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(29, 176, 165, 247);
@@ -96,7 +138,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         comboEmp.setBackground(new java.awt.Color(255, 255, 255));
         comboEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboEmp.setForeground(new java.awt.Color(0, 0, 0));
-        comboEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Empleados", " ", " " }));
+        comboEmp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin Empleados", " ", " " }));
         comboEmp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(comboEmp);
@@ -108,16 +150,16 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         jPanel1.add(jLabel2);
         jLabel2.setBounds(335, 126, 149, 32);
 
-        jList2.setBackground(new java.awt.Color(255, 255, 255));
-        jList2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jList2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jList2.setForeground(new java.awt.Color(0, 0, 0));
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        listaAreas2.setBackground(new java.awt.Color(255, 255, 255));
+        listaAreas2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        listaAreas2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        listaAreas2.setForeground(new java.awt.Color(0, 0, 0));
+        listaAreas2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(listaAreas2);
 
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(335, 176, 165, 247);
@@ -140,18 +182,18 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboEmp;
+    private javax.swing.JComboBox comboEmp;
     private javax.swing.JComboBox<String> comboMes;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList listaAreas;
+    private javax.swing.JList listaAreas2;
     // End of variables declaration//GEN-END:variables
 private Sistema modelo;
 }

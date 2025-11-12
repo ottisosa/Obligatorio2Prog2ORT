@@ -30,8 +30,6 @@ public class Sistema extends Observable {
 
     public void addListaPersonas(Persona persona) {
         this.listaPersonas.add(persona);
-        this.setChanged();
-        this.notifyObservers();
     }
 
     public ArrayList<Empleado> getListaEmpleados() {
