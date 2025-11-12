@@ -25,15 +25,10 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
     public void modificarArea() {
         if ((!this.txtNom.getText().equals("")) && (!this.txtDescrip.getText().equals("")) && (!this.txtPros.getText().equals(""))) {
 
-            if (!this.modelo.verificarNombreArea(this.txtNom.getText())) {
-                try {
-                    String nuevoNombre = this.txtNom.getText();
-                    String nuevaDescrip = this.txtDescrip.getText();
-                    int nuevoPresupuesto = Integer.parseInt(this.txtPros.getText());;
+   
+                String nuevaDescrip = this.txtDescrip.getText();
 
-                    this.areaAModificar.setNombre(nuevoNombre);
                     this.areaAModificar.setDescripcion(nuevaDescrip);
-                    this.areaAModificar.setPresupuesto(nuevoPresupuesto);
 
                     this.modelo.modificacionArea();
 
@@ -42,12 +37,8 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
                     this.txtPros.setText("");
 
                     this.cargarLista();
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Presupuesto debe ser un número", "ERROR", 0);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Area con el nombre ya existe", "ERROR", 0);
-            }
+
+                    
         } else {
             JOptionPane.showMessageDialog(null, "Complete los campos para Modificar un area", "ERROR", 0);
         }
@@ -142,6 +133,7 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
         jPanel1.add(btnModificar);
         btnModificar.setBounds(377, 266, 129, 39);
 
+        txtPros.setEditable(false);
         txtPros.setBackground(new java.awt.Color(255, 255, 255));
         txtPros.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPros.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,6 +142,7 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
         jPanel1.add(txtPros);
         txtPros.setBounds(340, 200, 230, 29);
 
+        txtNom.setEditable(false);
         txtNom.setBackground(new java.awt.Color(255, 255, 255));
         txtNom.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNom.setForeground(new java.awt.Color(0, 0, 0));
