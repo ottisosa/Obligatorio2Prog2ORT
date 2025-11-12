@@ -10,6 +10,14 @@ public class AreasModificacion extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         modelo = sistema;
+        cargarLista();
+
+    }
+    
+    
+    public void cargarLista(){
+        
+            this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
 
     }
 
