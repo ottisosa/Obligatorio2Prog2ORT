@@ -35,7 +35,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         if(this.listaAreas.getSelectedValue()!=null && this.listaAreas2.getSelectedValue()!=null){
             if(!this.comboEmp.getSelectedItem().equals("Sin Empleados")){
                 if(this.calcularSiMovPosible((Empleado)this.comboEmp.getSelectedItem())){
-                    
+                    ((Empleado)this.comboEmp.getSelectedItem()).setArea((Area)this.listaAreas2.getSelectedValue());
                 }
             }
             else{
