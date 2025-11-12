@@ -3,14 +3,16 @@ package interfaz;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
 import dominio.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
-public class AreasAlta extends javax.swing.JFrame {
+public class AreasAlta extends javax.swing.JFrame implements Observer {
 
     public AreasAlta(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
+        this.modelo.addObserver(this);
         this.cargarLista();
     }
 
@@ -31,7 +33,8 @@ public class AreasAlta extends javax.swing.JFrame {
                     this.txtNom.setText("");
                     this.txtDescrip.setText("");
                     this.txtPres.setText("");
-
+                    
+                    this.modelo.notifyObservers();
                     this.cargarLista();
                 }
                 catch(NumberFormatException e){
@@ -45,6 +48,11 @@ public class AreasAlta extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Complete los campos para agregar un area", "ERROR", 0);
         }
+    }
+    
+    @Override
+    public void update(Observable o, Object arg){
+        this.cargarLista();
     }
 
     @SuppressWarnings("unchecked")

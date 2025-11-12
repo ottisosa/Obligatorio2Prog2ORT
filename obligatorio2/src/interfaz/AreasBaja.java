@@ -3,20 +3,27 @@
 
 package interfaz;
 import dominio.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
-public class AreasBaja extends javax.swing.JFrame {
+public class AreasBaja extends javax.swing.JFrame implements Observer{
 
 
     public AreasBaja(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
+        this.modelo.addObserver(this);
         this.cargarListaSinEmp();
     }
     
     public void cargarListaSinEmp() {
         this.listaAreas.setListData(this.modelo.getListaAreasSinEmp().toArray());
+    }
+    
+    @Override
+    public void update(Observable o, Object arg){
+        this.cargarListaSinEmp();
     }
     
     
@@ -158,6 +165,8 @@ public class AreasBaja extends javax.swing.JFrame {
             this.textoNom.setText("");
             this.textoDesc.setText("");
             this.textoPres.setText("");
+            
+            this.modelo.notifyObservers();
         }
         else{
             JOptionPane.showMessageDialog(null, "Seleccione un area a eliminar", "ERROR", 0);
