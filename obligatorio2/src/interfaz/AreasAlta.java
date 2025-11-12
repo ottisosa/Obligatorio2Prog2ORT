@@ -34,7 +34,6 @@ public class AreasAlta extends javax.swing.JFrame implements Observer {
                     this.txtDescrip.setText("");
                     this.txtPres.setText("");
                     
-                    this.modelo.notifyObservers();
                     this.cargarLista();
                 }
                 catch(NumberFormatException e){

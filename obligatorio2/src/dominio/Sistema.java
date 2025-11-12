@@ -31,6 +31,8 @@ public class Sistema extends Observable{
 
     public void addListaPersonas(Persona persona) {
         this.listaPersonas.add(persona);
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public ArrayList<Empleado> getListaEmpleados() {
@@ -39,6 +41,8 @@ public class Sistema extends Observable{
 
     public void addListaEmpleados(Empleado empleado) {
         this.listaEmpleados.add(empleado);
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public ArrayList<Manager> getListaManagers() {
@@ -47,11 +51,13 @@ public class Sistema extends Observable{
 
     public void addListaManagers(Manager manager) {
         this.listaManagers.add(manager);
-    }
+        this.setChanged();
+        this.notifyObservers();    }
     
     public void eliminarListaManagers(Manager manager){
         this.listaManagers.remove(manager);
-    }
+        this.setChanged();
+        this.notifyObservers();    }
 
     public ArrayList<Area> getListaAreas() {
         return listaAreas;
@@ -59,11 +65,13 @@ public class Sistema extends Observable{
 
     public void addListaAreas(Area area) {
         this.listaAreas.add(area);
-    }
+        this.setChanged();
+        this.notifyObservers();    }
     
     public void eliminarListaAreas(Area area){
         this.listaAreas.remove(area);
-    }
+        this.setChanged();
+        this.notifyObservers();    }
     
     public boolean verificarNombreArea(String nombre){
         boolean esta=false;

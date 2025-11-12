@@ -165,8 +165,6 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
             this.textoNom.setText("");
             this.textoDesc.setText("");
             this.textoPres.setText("");
-            
-            this.modelo.notifyObservers();
         }
         else{
             JOptionPane.showMessageDialog(null, "Seleccione un area a eliminar", "ERROR", 0);
