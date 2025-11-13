@@ -20,6 +20,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
     
     public void cargarLista(){
         this.listaEmpleados.setListData(this.modelo.getListaEmpleados().toArray());
+        this.listaEmpleados.setListData(this.modelo.getListaManagers().toArray());
     }
     
     public void AgregarEmpleado(){

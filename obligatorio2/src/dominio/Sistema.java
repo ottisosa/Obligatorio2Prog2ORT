@@ -33,7 +33,8 @@ public class Sistema extends Observable {
     }
 
     public ArrayList<Empleado> getListaEmpleados() {
-        return listaEmpleados;
+        this.ordenarEmpleadoPorSalario(this.listaEmpleados);
+        return this.listaEmpleados;
     }
 
     public void addListaEmpleados(Empleado empleado) {
@@ -44,7 +45,7 @@ public class Sistema extends Observable {
 
     public ArrayList<Manager> getListaManagers() {
         
-        this.ordenarPorAntiguedad(this.listaManagers);
+        this.ordenarManagerPorAntiguedad(this.listaManagers);
 
         return listaManagers;
     }
@@ -127,9 +128,13 @@ public class Sistema extends Observable {
         Collections.sort(listaArea);
     }
 
-    public void ordenarPorAntiguedad(ArrayList<Manager> listaManagers){
+    public void ordenarManagerPorAntiguedad(ArrayList<Manager> listaManagers){
     
         Collections.sort(listaManagers);
+    }
+    
+    public void ordenarEmpleadoPorSalario(ArrayList<Empleado> listaEmpleados){
+        Collections.sort(listaEmpleados);
     }
 
 }

@@ -2,7 +2,7 @@ package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
-public class Empleado extends Persona {
+public class Empleado extends Persona implements Comparable<Empleado>{
     private int salario;
     private Manager manager;
     private Area area;
@@ -43,5 +43,10 @@ public class Empleado extends Persona {
     @Override
     public String toString() {
         return this.nombre;
+    }
+    
+    @Override
+    public int compareTo(Empleado emp){
+        return this.salario - emp.salario;
     }
 }
