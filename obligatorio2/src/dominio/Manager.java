@@ -32,7 +32,7 @@ public class Manager extends Persona implements Comparable<Manager> {
 
     @Override
     public String toString() {
-        return "Manager{" + "antiguedad=" + antiguedad + '}';
+        return this.nombre;
     }
 
     

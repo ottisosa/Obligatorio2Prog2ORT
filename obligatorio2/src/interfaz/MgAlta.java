@@ -81,7 +81,7 @@ public class MgAlta extends javax.swing.JFrame implements Observer {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cel:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(240, 250, 50, 25);
+        jLabel1.setBounds(200, 250, 50, 25);
 
         listaManagers.setBackground(new java.awt.Color(255, 255, 255));
         listaManagers.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -106,13 +106,13 @@ public class MgAlta extends javax.swing.JFrame implements Observer {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Antiguedad:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(190, 190, 130, 25);
+        jLabel3.setBounds(200, 190, 130, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CI:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(260, 130, 30, 25);
+        jLabel4.setBounds(200, 130, 30, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
