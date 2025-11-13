@@ -190,7 +190,7 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
 
     private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged
 
-        if(this.listaAreas.getSelectedValue()!=null){
+        if (this.listaAreas.getSelectedValue() != null) {
             Area ar = (Area) this.listaAreas.getSelectedValue();
             this.areaAModificar = ar;
             this.txtNom.setText(ar.getNombre());
@@ -198,7 +198,7 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
             this.txtPros.setText("" + ar.getPresupuesto());
 
         }
-        
+
     }//GEN-LAST:event_listaAreasValueChanged
 
 
