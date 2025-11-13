@@ -23,7 +23,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
     }
     
     public void AgregarEmpleado(){
-        if((!this.txtNom.getText().equals("")) && (!this.txtCI.getText().equals("")) && (!this.txtAntiguedad.getText().equals("")) && (!this.txtSalario.getText().equals("")) && (!this.txtManager.getText().equals("")) && (!this.txtArea.getText().equals(""))){
+        if((!this.txtNom.getText().equals("")) && (!this.txtCI.getText().equals("")) && (!this.txtSalario.getText().equals("")) && (!this.txtManager.getText().equals("")) && (!this.txtArea.getText().equals(""))){
             
         }
         else{
@@ -58,7 +58,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         txtArea = new javax.swing.JTextField();
         txtCel = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        listaEmpleados1 = new javax.swing.JList();
+        listaManagers = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtManager = new javax.swing.JTextPane();
 
@@ -168,16 +168,16 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 20, 160, 32);
 
-        listaEmpleados1.setBackground(new java.awt.Color(255, 255, 255));
-        listaEmpleados1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        listaEmpleados1.setForeground(new java.awt.Color(0, 0, 0));
-        listaEmpleados1.setModel(new javax.swing.AbstractListModel() {
+        listaManagers.setBackground(new java.awt.Color(255, 255, 255));
+        listaManagers.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        listaManagers.setForeground(new java.awt.Color(0, 0, 0));
+        listaManagers.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jPanel1.add(listaEmpleados1);
-        listaEmpleados1.setBounds(20, 220, 140, 110);
+        jPanel1.add(listaManagers);
+        listaManagers.setBounds(20, 220, 140, 110);
 
         txtManager.setEditable(false);
         txtManager.setBackground(new java.awt.Color(255, 255, 255));
@@ -211,7 +211,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList listaEmpleados;
-    private javax.swing.JList listaEmpleados1;
+    private javax.swing.JList listaManagers;
     private javax.swing.JTextField txtArea;
     private javax.swing.JTextField txtCI;
     private javax.swing.JTextField txtCel;
