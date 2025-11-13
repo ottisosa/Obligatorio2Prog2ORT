@@ -139,7 +139,7 @@ public class Comenzar extends javax.swing.JFrame {
         Manager man2 = new Manager(4,"Ricardo Morales","3.214.589-3","094121212", this.modelo);
         Manager man3 = new Manager(1,"Laura Torales","3.589.257-5","099654321", this.modelo);
         Manager man4 = new Manager(5,"Juan Pablo Zapata","4.555.197-7","099202020", this.modelo);
-        Empleado emp = new Empleado(16,man1,per,"ads","51236548","21365845",this.modelo);
+        Empleado emp = new Empleado(10000,man1,seg,"ads","51236548","21365845",this.modelo);
         
     }//GEN-LAST:event_btnSisCargadoActionPerformed
 

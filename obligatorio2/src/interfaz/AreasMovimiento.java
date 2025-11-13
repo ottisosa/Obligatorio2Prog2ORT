@@ -13,7 +13,6 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         this.modelo = sistema;
         this.modelo.addObserver(this);
         this.cargarListas();
-        this.cargarEmp();
     }
     
     public void cargarListas(){
@@ -21,21 +20,25 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         this.listaAreas2.setListData(this.modelo.getListaAreas().toArray());
     }
     
-    public void cargarEmp(){
+    public void cargarEmp(Area area){
         ArrayList<Empleado> listaEmp = this.modelo.getListaEmpleados();
-        if(!listaEmp.isEmpty()){
-            this.comboEmp.removeAllItems();
-            for (int i = 0; i < listaEmp.size(); i++) {
+        this.comboEmp.removeAllItems();
+        for (int i = 0; i < listaEmp.size(); i++) {
+            if(listaEmp.get(i).getArea().equals(area)){
                 this.comboEmp.addItem(listaEmp.get(i));
             }
+        }
+        if (this.comboEmp.getItemCount()==0){
+            this.comboEmp.addItem("Sin empleados");
         }
     }
     
     public void moverEmp(){
         if(this.listaAreas.getSelectedValue()!=null && this.listaAreas2.getSelectedValue()!=null){
-            if(!this.comboEmp.getSelectedItem().equals("Sin Empleados")){
+            System.out.println(this.comboEmp.getSelectedItem());
+            if(!(this.comboEmp.getSelectedItem().equals("Sin empleados"))){
                 int salTotal = this.calcularSalarioTotal((Empleado)this.comboEmp.getSelectedItem());
-                if(salTotal>=0){
+                if((((Area)this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal)>=0){
                     ((Empleado)this.comboEmp.getSelectedItem()).setArea((Area)this.listaAreas2.getSelectedValue());
                     ((Area)this.listaAreas2.getSelectedValue()).setPresupuesto(((Area)this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal);
                     ((Area)this.listaAreas.getSelectedValue()).setPresupuesto(((Area)this.listaAreas.getSelectedValue()).getPresupuesto() + salTotal);
@@ -70,7 +73,9 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
     @Override
     public void update(Observable o, Object arg){
         this.cargarListas();
-        this.cargarEmp();
+        if(this.listaAreas.getSelectedValue()!=null){
+            this.cargarEmp((Area)this.listaAreas.getSelectedValue());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -88,7 +93,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaAreas2 = new javax.swing.JList();
-        jButton2 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Areas movimiento");
@@ -122,6 +127,11 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        listaAreas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaAreasValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaAreas);
 
         jPanel1.add(jScrollPane1);
@@ -142,7 +152,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         comboEmp.setBackground(new java.awt.Color(255, 255, 255));
         comboEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboEmp.setForeground(new java.awt.Color(0, 0, 0));
-        comboEmp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin Empleados", " ", " " }));
+        comboEmp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin empleados" }));
         comboEmp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(comboEmp);
@@ -168,15 +178,20 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(335, 176, 165, 247);
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Mover");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setFocusPainted(false);
-        jPanel1.add(jButton2);
-        jButton2.setBounds(500, 40, 129, 39);
+        btnModificar.setBackground(new java.awt.Color(0, 0, 102));
+        btnModificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Mover");
+        btnModificar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnModificar.setFocusPainted(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar);
+        btnModificar.setBounds(500, 40, 129, 39);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 658, 443);
@@ -184,11 +199,19 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         setBounds(0, 0, 674, 451);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged
+        this.cargarEmp((Area)this.listaAreas.getSelectedValue());
+    }//GEN-LAST:event_listaAreasValueChanged
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        this.moverEmp();
+    }//GEN-LAST:event_btnModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox comboEmp;
     private javax.swing.JComboBox<String> comboMes;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
