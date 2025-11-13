@@ -3,8 +3,10 @@ package interfaz;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
 import dominio.*;
+import java.util.*;
+import javax.swing.JOptionPane;
 
-public class EmpAlta extends javax.swing.JFrame {
+public class EmpAlta extends javax.swing.JFrame implements Observer{
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EmpAlta.class.getName());
 
@@ -12,9 +14,29 @@ public class EmpAlta extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
+        this.modelo.addObserver(this);
+        this.cargarLista();
     }
+    
+    public void cargarLista(){
+        this.listaEmpleados.setListData(this.modelo.getListaEmpleados().toArray());
+    }
+    
+    public void AgregarEmpleado(){
+        if((!this.txtNom.getText().equals("")) && (!this.txtCI.getText().equals("")) && (!this.txtAntiguedad.getText().equals("")) && (!this.txtSalario.getText().equals("")) && (!this.txtManager.getText().equals("")) && (!this.txtArea.getText().equals(""))){
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Complete los campos para agregar un empleado", "ERROR", 0);
+        }
+    }
+    
 
-
+    @Override
+    public void update(Observable o, Object arg){
+        this.cargarLista();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -24,20 +46,21 @@ public class EmpAlta extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaEmpleados = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtCI = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
-        txtAntiguedad = new javax.swing.JTextField();
-        txtCel = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
         txtNom = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtCel1 = new javax.swing.JTextField();
-        txtCel2 = new javax.swing.JTextField();
-        txtCel3 = new javax.swing.JTextField();
+        txtArea = new javax.swing.JTextField();
+        txtCel = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        listaEmpleados1 = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtManager = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -50,7 +73,7 @@ public class EmpAlta extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Salario:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(200, 240, 100, 25);
+        jLabel1.setBounds(200, 190, 100, 25);
 
         listaEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         listaEmpleados.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -63,19 +86,13 @@ public class EmpAlta extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaEmpleados);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 70, 140, 250);
+        jScrollPane1.setBounds(20, 60, 140, 110);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Empleados:");
+        jLabel2.setText("Managers:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 20, 160, 32);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Antiguedad:");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(200, 140, 130, 25);
+        jLabel2.setBounds(20, 180, 160, 32);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,19 +118,13 @@ public class EmpAlta extends javax.swing.JFrame {
         btnAgregar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         btnAgregar.setFocusPainted(false);
         jPanel1.add(btnAgregar);
-        btnAgregar.setBounds(30, 340, 120, 40);
+        btnAgregar.setBounds(370, 340, 120, 40);
 
-        txtAntiguedad.setBackground(new java.awt.Color(255, 255, 255));
-        txtAntiguedad.setForeground(new java.awt.Color(0, 0, 0));
-        txtAntiguedad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtAntiguedad);
-        txtAntiguedad.setBounds(320, 140, 200, 30);
-
-        txtCel.setBackground(new java.awt.Color(255, 255, 255));
-        txtCel.setForeground(new java.awt.Color(0, 0, 0));
-        txtCel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtCel);
-        txtCel.setBounds(320, 240, 200, 30);
+        txtSalario.setBackground(new java.awt.Color(255, 255, 255));
+        txtSalario.setForeground(new java.awt.Color(0, 0, 0));
+        txtSalario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtSalario);
+        txtSalario.setBounds(320, 190, 200, 30);
 
         txtNom.setBackground(new java.awt.Color(255, 255, 255));
         txtNom.setForeground(new java.awt.Color(0, 0, 0));
@@ -125,37 +136,57 @@ public class EmpAlta extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Manager:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(200, 290, 110, 25);
+        jLabel6.setBounds(200, 240, 110, 25);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Area:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(200, 340, 90, 25);
+        jLabel7.setBounds(200, 290, 90, 25);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Cel:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(200, 190, 60, 25);
+        jLabel8.setBounds(200, 140, 60, 25);
 
-        txtCel1.setBackground(new java.awt.Color(255, 255, 255));
-        txtCel1.setForeground(new java.awt.Color(0, 0, 0));
-        txtCel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtCel1);
-        txtCel1.setBounds(320, 290, 200, 30);
+        txtArea.setBackground(new java.awt.Color(255, 255, 255));
+        txtArea.setForeground(new java.awt.Color(0, 0, 0));
+        txtArea.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtArea);
+        txtArea.setBounds(320, 290, 200, 30);
 
-        txtCel2.setBackground(new java.awt.Color(255, 255, 255));
-        txtCel2.setForeground(new java.awt.Color(0, 0, 0));
-        txtCel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtCel2);
-        txtCel2.setBounds(320, 340, 200, 30);
+        txtCel.setBackground(new java.awt.Color(255, 255, 255));
+        txtCel.setForeground(new java.awt.Color(0, 0, 0));
+        txtCel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtCel);
+        txtCel.setBounds(320, 140, 200, 30);
 
-        txtCel3.setBackground(new java.awt.Color(255, 255, 255));
-        txtCel3.setForeground(new java.awt.Color(0, 0, 0));
-        txtCel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtCel3);
-        txtCel3.setBounds(320, 190, 200, 30);
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Empleados:");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(20, 20, 160, 32);
+
+        listaEmpleados1.setBackground(new java.awt.Color(255, 255, 255));
+        listaEmpleados1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        listaEmpleados1.setForeground(new java.awt.Color(0, 0, 0));
+        listaEmpleados1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jPanel1.add(listaEmpleados1);
+        listaEmpleados1.setBounds(20, 220, 140, 110);
+
+        txtManager.setEditable(false);
+        txtManager.setBackground(new java.awt.Color(255, 255, 255));
+        txtManager.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        txtManager.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(txtManager);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(320, 240, 200, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(-1, -5, 590, 430);
@@ -163,29 +194,30 @@ public class EmpAlta extends javax.swing.JFrame {
         setBounds(0, 0, 596, 428);
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList listaEmpleados;
-    private javax.swing.JTextField txtAntiguedad;
+    private javax.swing.JList listaEmpleados1;
+    private javax.swing.JTextField txtArea;
     private javax.swing.JTextField txtCI;
     private javax.swing.JTextField txtCel;
-    private javax.swing.JTextField txtCel1;
-    private javax.swing.JTextField txtCel2;
-    private javax.swing.JTextField txtCel3;
+    private javax.swing.JTextPane txtManager;
     private javax.swing.JTextField txtNom;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 private Sistema modelo;
 }
