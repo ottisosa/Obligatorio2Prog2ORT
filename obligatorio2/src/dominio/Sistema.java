@@ -90,6 +90,19 @@ public class Sistema extends Observable {
         return esta;
     }
 
+    public boolean verificarCedula(String ci) {
+
+        boolean esta = false;
+
+        for (int i = 0; i < this.listaPersonas.size(); i++) {
+            if (this.listaPersonas.get(i).getCi().equals(ci)) {
+                esta = true;
+            }
+        }
+        return esta;
+
+    }
+
     public ArrayList<Area> getListaAreasSinEmp() {
         ArrayList<Area> arSinEmp = new ArrayList<>();
         for (int i = 0; i < this.listaAreas.size(); i++) {
