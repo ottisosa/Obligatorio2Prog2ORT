@@ -194,9 +194,9 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         btnModificar.setBounds(500, 40, 129, 39);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 658, 443);
+        jPanel1.setBounds(0, 0, 658, 490);
 
-        setBounds(0, 0, 674, 451);
+        setBounds(0, 0, 674, 496);
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged

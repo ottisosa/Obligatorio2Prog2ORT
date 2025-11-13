@@ -43,6 +43,9 @@ public class Sistema extends Observable {
     }
 
     public ArrayList<Manager> getListaManagers() {
+        
+        this.ordenarPorAntiguedad(this.listaManagers);
+
         return listaManagers;
     }
 
@@ -122,6 +125,11 @@ public class Sistema extends Observable {
 
     public void ordenarAreaPorNombre(ArrayList<Area> listaArea) {
         Collections.sort(listaArea);
+    }
+
+    public void ordenarPorAntiguedad(ArrayList<Manager> listaManagers){
+    
+        Collections.sort(listaManagers);
     }
 
 }
