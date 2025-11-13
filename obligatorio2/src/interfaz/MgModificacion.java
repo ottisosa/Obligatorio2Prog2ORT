@@ -70,6 +70,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         txtCel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar manager");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));

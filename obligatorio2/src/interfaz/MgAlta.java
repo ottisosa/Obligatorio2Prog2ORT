@@ -71,6 +71,7 @@ public class MgAlta extends javax.swing.JFrame implements Observer {
         txtNom = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar manager");
         setResizable(false);
         getContentPane().setLayout(null);
 

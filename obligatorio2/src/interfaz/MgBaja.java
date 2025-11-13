@@ -47,6 +47,7 @@ public class MgBaja extends javax.swing.JFrame implements Observer {
         txtNom = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Eliminar manager");
         setResizable(false);
         getContentPane().setLayout(null);
 
