@@ -30,9 +30,9 @@ public class RepInteligente extends javax.swing.JFrame {
         }
 
     }
-    
+        
     public void cargarTextPane(){
-    
+          
         
     }
 
