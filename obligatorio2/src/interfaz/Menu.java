@@ -2,7 +2,7 @@ package interfaz;
 import dominio.*;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-import javax.swing.*;
+
 
 public class Menu extends javax.swing.JFrame {
 
@@ -39,11 +39,6 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
         setResizable(false);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
@@ -166,13 +161,6 @@ public class Menu extends javax.swing.JFrame {
 
         setBounds(0, 0, 510, 395);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
-            JOptionPane.showMessageDialog(null, "Autores: \nSantiago Quintana (327886), 19 años, SQ327886@fi365.ort.edu.uy\nOctavio Sosa (363131), 20 años, OS363131@fi365.ort.edu.uy");
-        }
-    }//GEN-LAST:event_formKeyPressed
 
     private void arAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arAltaActionPerformed
         AreasAlta vent = new AreasAlta(this.modelo);

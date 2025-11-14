@@ -1,6 +1,11 @@
 
 package interfaz;
 import dominio.*;
+import java.awt.AWTEvent;
+import java.awt.Toolkit;
+import java.awt.event.AWTEventListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class SplashScreen extends javax.swing.JFrame {
     
@@ -18,7 +23,22 @@ public class SplashScreen extends javax.swing.JFrame {
         
         Comenzar com = new Comenzar(this.modelo);
         com.setVisible(true);
-        
+        this.abrirF1();
+    }
+    
+    public void abrirF1(){
+        Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener(){
+            @Override
+            public void eventDispatched(AWTEvent event){
+                if(event.getID() == KeyEvent.KEY_PRESSED){
+                    KeyEvent keyevent = (KeyEvent) event;
+                    if(keyevent.getKeyCode() == KeyEvent.VK_F1){
+                        keyevent.consume();
+                        JOptionPane.showMessageDialog(null, "Autores: \nSantiago Quintana (327886), SQ327886@fi365.ort.edu.uy\nOctavio Sosa (363131), OS363131@fi365.ort.edu.uy");
+                    }
+                }
+            }
+        }, AWTEvent.KEY_EVENT_MASK);
     }
 
     @SuppressWarnings("unchecked")

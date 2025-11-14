@@ -15,7 +15,7 @@ public class ArchLectura {
             in = new Scanner(Paths.get(nom));
         }
         catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Error al crear el archivo de CV", "ERROR", 0);
+            JOptionPane.showMessageDialog(null, "Error al abrir el CV", "ERROR", 0);
         }
     }
     
