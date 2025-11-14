@@ -20,38 +20,46 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
     
     public void cargarLista(){
         this.listaEmpleados.setListData(this.modelo.getListaEmpleados().toArray());
-        this.listaEmpleados.setListData(this.modelo.getListaManagers().toArray());
+        this.listaManagers.setListData(this.modelo.getListaManagers().toArray());
+        this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
     }
     
-    public void AgregarEmpleado(){
-        if((!this.txtNom.getText().equals("")) && (!this.txtCI.getText().equals("")) && (!this.txtSalario.getText().equals("")) && (!this.txtManager.getText().equals("")) && (!this.txtArea.getText().equals(""))){
-            try{
-                if(verificarCedula()){
-                    
+    public void agregarEmpleado(){
+        if((!this.txtNom.getText().equals("")) && (!this.txtCI.getText().equals("")) && (!this.txtSalario.getText().equals("")) && (!this.txtManager.getText().equals("")) && (!this.txtArea.getText().equals("")) && (!this.txtCv.getText().equals(""))){
+                if(!this.modelo.verificarCedula(this.txtCI.getText())){
+                    try{
+                        if(this.calcularSalario()){
+                            
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Area no tiene suficiente presupuesto", "ERROR", 0);
+                        }
+                    }
+                    catch(NumberFormatException e){
+                        JOptionPane.showMessageDialog(null, "Salario debe ser un número", "ERROR", 0);
+                    }
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Cedula ya esta ingresada\n¡¡NO AL ROBO DE IDENTIDAD!!", "ERROR", 0);
-                }
-            }
-            catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "Salario debe ser un número", "ERROR", 0);
-            }
+                }                        
         }
         else{
             JOptionPane.showMessageDialog(null, "Complete los campos para agregar un empleado", "ERROR", 0);
         }
     }
     
-    public boolean verificarCedula(){
-        boolean esta = false;
-        for (int i = 0; i < this.modelo.getListaPersonas().size(); i++) {
-            if((this.modelo.getListaPersonas().get(i).getCi()).equals(this.txtCI.getText())){
-                esta = true;
-            }
+    public boolean calcularSalario(){
+        boolean hayPlata = false;
+                
+        int salTotal = ((Integer.parseInt(this.txtSalario.getText()))*12);
+        int Pres = this.area.getPresupuesto();
+        if(salTotal<=Pres){
+            hayPlata = true;
+            this.area.setPresupuesto(Pres - salTotal);
         }
-        return !esta;
+        return hayPlata;
     }
-
+    
     @Override
     public void update(Observable o, Object arg){
         this.cargarLista();
@@ -87,6 +95,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         managerEmp = new javax.swing.JLabel();
         areaEmp = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        nomEmp1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listaAreas = new javax.swing.JList();
@@ -96,7 +105,8 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         txtArea = new javax.swing.JTextPane();
         panelCv = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        txtCv = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtCv = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -133,7 +143,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Areas:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 300, 160, 32);
+        jLabel2.setBounds(10, 310, 160, 32);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,6 +162,11 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         btnAgregar.setText("Agregar");
         btnAgregar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         btnAgregar.setFocusPainted(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAgregar);
         btnAgregar.setBounds(310, 400, 120, 40);
 
@@ -220,7 +235,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         nomEmp.setForeground(new java.awt.Color(255, 255, 255));
         nomEmp.setText("Nombre");
         panelEmp.add(nomEmp);
-        nomEmp.setBounds(20, 60, 180, 25);
+        nomEmp.setBounds(20, 70, 180, 25);
 
         ciEmp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         ciEmp.setForeground(new java.awt.Color(255, 255, 255));
@@ -258,8 +273,14 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         panelEmp.add(jLabel10);
         jLabel10.setBounds(40, 10, 150, 32);
 
+        nomEmp1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomEmp1.setForeground(new java.awt.Color(255, 255, 255));
+        nomEmp1.setText("(Lista)");
+        panelEmp.add(nomEmp1);
+        nomEmp1.setBounds(80, 40, 60, 25);
+
         jPanel1.add(panelEmp);
-        panelEmp.setBounds(500, 20, 200, 400);
+        panelEmp.setBounds(740, 20, 200, 400);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,7 +304,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         jScrollPane3.setViewportView(listaAreas);
 
         jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(20, 340, 140, 100);
+        jScrollPane3.setBounds(20, 350, 140, 100);
 
         listaManagers.setBackground(new java.awt.Color(255, 255, 255));
         listaManagers.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -324,11 +345,13 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
 
         txtCv.setBackground(new java.awt.Color(255, 255, 255));
         txtCv.setForeground(new java.awt.Color(0, 0, 0));
-        panelCv.add(txtCv);
-        txtCv.setBounds(20, 50, 160, 330);
+        jScrollPane6.setViewportView(txtCv);
+
+        panelCv.add(jScrollPane6);
+        jScrollPane6.setBounds(20, 50, 160, 330);
 
         jPanel1.add(panelCv);
-        panelCv.setBounds(740, 20, 200, 400);
+        panelCv.setBounds(500, 20, 200, 400);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(-1, -5, 1000, 500);
@@ -364,6 +387,10 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         }
     }//GEN-LAST:event_listaManagersValueChanged
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        this.agregarEmpleado();
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
     
 
 
@@ -389,18 +416,20 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JList listaAreas;
     private javax.swing.JList listaEmpleados;
     private javax.swing.JList listaManagers;
     private javax.swing.JLabel managerEmp;
     private javax.swing.JLabel nomEmp;
+    private javax.swing.JLabel nomEmp1;
     private javax.swing.JPanel panelCv;
     private javax.swing.JPanel panelEmp;
     private javax.swing.JLabel salEmp;
     private javax.swing.JTextPane txtArea;
     private javax.swing.JTextField txtCI;
     private javax.swing.JTextField txtCel;
-    private javax.swing.JTextField txtCv;
+    private javax.swing.JTextPane txtCv;
     private javax.swing.JTextPane txtManager;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtSalario;
