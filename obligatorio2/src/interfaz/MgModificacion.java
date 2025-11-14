@@ -25,7 +25,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
 
         if (!this.txtCel.getText().equals("")) {
 
-            String nuevoCel = this.txtEmp.getText();
+            String nuevoCel = this.txtCel.getText();
 
             this.managerModificar.setCelular(nuevoCel);
 
@@ -39,7 +39,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
             this.cargarLista();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Complete los campos para Modificar un manager", "ERROR", 0);
+            JOptionPane.showMessageDialog(null, "Complete los campos para modificar un manager", "ERROR", 0);
         }
     }
 
