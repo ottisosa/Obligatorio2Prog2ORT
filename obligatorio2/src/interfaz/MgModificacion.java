@@ -23,7 +23,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
 
     public void modificarManager() {
 
-        if (!this.txtEmp.getText().equals("")) {
+        if (!this.txtCel.getText().equals("")) {
 
             String nuevoCel = this.txtEmp.getText();
 
