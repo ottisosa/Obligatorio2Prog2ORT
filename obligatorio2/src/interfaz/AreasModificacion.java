@@ -217,6 +217,6 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtPros;
     // End of variables declaration//GEN-END:variables
-private Sistema modelo;
+    private Sistema modelo;
     private Area areaAModificar;
 }

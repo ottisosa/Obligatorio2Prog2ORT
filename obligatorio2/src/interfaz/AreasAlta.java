@@ -25,7 +25,7 @@ public class AreasAlta extends javax.swing.JFrame implements Observer {
                 try{
                     String Nombre = this.txtNom.getText();
                     String Descrip = this.txtDescrip.getText();
-                    int Presupuesto = Integer.parseInt(this.txtPres.getText());;
+                    long Presupuesto = Long.parseLong(this.txtPres.getText());;
 
                     Area area = new Area(Nombre, Descrip, Presupuesto, this.modelo);
 

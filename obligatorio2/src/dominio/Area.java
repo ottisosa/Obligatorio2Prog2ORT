@@ -6,10 +6,10 @@ public class Area implements Comparable<Area> {
 
     private String nombre;
     private String descripcion;
-    private int presupuesto;
+    private long presupuesto;
     private Sistema modelo;
 
-    public Area(String nombre, String descripcion, int presupuesto, Sistema sistema) {
+    public Area(String nombre, String descripcion, long presupuesto, Sistema sistema) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.presupuesto = presupuesto;
@@ -33,11 +33,11 @@ public class Area implements Comparable<Area> {
         this.descripcion = descripcion;
     }
 
-    public int getPresupuesto() {
+    public long getPresupuesto() {
         return presupuesto;
     }
 
-    public void setPresupuesto(int presupuesto) {
+    public void setPresupuesto(long presupuesto) {
         this.presupuesto = presupuesto;
     }
 
