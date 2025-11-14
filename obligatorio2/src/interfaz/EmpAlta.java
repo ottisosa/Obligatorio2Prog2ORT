@@ -39,11 +39,15 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
                             
                             Empleado empleado = new Empleado(sal, man, ar, nom, ci, cel, this.modelo);
                             
+                            String cv = this.txtCv.getText();
                             File dirCv = new File(System.getProperty("user.dir")+File.separator+"CVs");
                             if(!dirCv.exists()){
                                 dirCv.mkdir();
                             }
-                            
+                            String nomArch = "/CV"+ci+".txt";
+                            ArchGrabacion arch = new ArchGrabacion(System.getProperty("user.dir")+File.separator+"CVs"+nomArch);
+                            arch.grabarLinea(cv);
+                            arch.cerrar();
                             
                             this.txtSalario.setText("");
                             this.txtManager.setText("");
