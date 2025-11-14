@@ -82,7 +82,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Emlpeados a cargo:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(170, 270, 170, 25);
+        jLabel1.setBounds(180, 260, 170, 25);
 
         listaManagers.setBackground(new java.awt.Color(255, 255, 255));
         listaManagers.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -112,19 +112,19 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Antiguedad:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(190, 160, 130, 25);
+        jLabel3.setBounds(180, 160, 130, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CI:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(250, 110, 40, 25);
+        jLabel4.setBounds(180, 110, 40, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(210, 60, 80, 25);
+        jLabel5.setBounds(180, 60, 80, 25);
 
         btnModificar.setBackground(new java.awt.Color(0, 0, 102));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,7 +137,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
             }
         });
         jPanel1.add(btnModificar);
-        btnModificar.setBounds(350, 310, 120, 40);
+        btnModificar.setBounds(390, 310, 120, 40);
 
         txtCi.setEditable(false);
         txtCi.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,7 +146,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jScrollPane2.setViewportView(txtCi);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(320, 110, 180, 30);
+        jScrollPane2.setBounds(350, 110, 180, 30);
 
         txtAntig.setEditable(false);
         txtAntig.setBackground(new java.awt.Color(255, 255, 255));
@@ -155,7 +155,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jScrollPane3.setViewportView(txtAntig);
 
         jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(320, 160, 180, 30);
+        jScrollPane3.setBounds(350, 160, 180, 30);
 
         txtNom.setEditable(false);
         txtNom.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,26 +164,26 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jScrollPane5.setViewportView(txtNom);
 
         jPanel1.add(jScrollPane5);
-        jScrollPane5.setBounds(320, 60, 180, 30);
+        jScrollPane5.setBounds(350, 60, 180, 30);
 
         txtEmp.setEditable(false);
         txtEmp.setBackground(new java.awt.Color(255, 255, 255));
         txtEmp.setForeground(new java.awt.Color(0, 0, 0));
         txtEmp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtEmp);
-        txtEmp.setBounds(320, 270, 180, 30);
+        txtEmp.setBounds(350, 260, 180, 30);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cel:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(260, 210, 40, 25);
+        jLabel6.setBounds(180, 210, 40, 25);
 
         txtCel.setBackground(new java.awt.Color(255, 255, 255));
         txtCel.setForeground(new java.awt.Color(0, 0, 0));
         txtCel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtCel);
-        txtCel.setBounds(320, 210, 180, 30);
+        txtCel.setBounds(350, 210, 180, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
