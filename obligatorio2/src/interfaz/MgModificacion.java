@@ -23,9 +23,9 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
 
     public void modificarManager() {
 
-        if (!this.txtCel.getText().equals("")) {
+        if (!this.txtEmp.getText().equals("")) {
 
-            String nuevoCel = this.txtCel.getText();
+            String nuevoCel = this.txtEmp.getText();
 
             this.managerModificar.setCelular(nuevoCel);
 
@@ -34,7 +34,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
             this.txtNom.setText("");
             this.txtCi.setText("");
             this.txtAntig.setText("");
-            this.txtCel.setText("");
+            this.txtEmp.setText("");
 
             this.cargarLista();
 
@@ -67,6 +67,8 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         txtAntig = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         txtNom = new javax.swing.JTextPane();
+        txtEmp = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         txtCel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -76,11 +78,11 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cel:");
+        jLabel1.setText("Emlpeados a cargo:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(250, 250, 40, 25);
+        jLabel1.setBounds(170, 270, 170, 25);
 
         listaManagers.setBackground(new java.awt.Color(255, 255, 255));
         listaManagers.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
@@ -110,19 +112,19 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Antiguedad:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(190, 190, 130, 25);
+        jLabel3.setBounds(190, 160, 130, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CI:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(250, 130, 40, 25);
+        jLabel4.setBounds(250, 110, 40, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(210, 70, 80, 25);
+        jLabel5.setBounds(210, 60, 80, 25);
 
         btnModificar.setBackground(new java.awt.Color(0, 0, 102));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,7 +146,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jScrollPane2.setViewportView(txtCi);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(320, 130, 180, 30);
+        jScrollPane2.setBounds(320, 110, 180, 30);
 
         txtAntig.setEditable(false);
         txtAntig.setBackground(new java.awt.Color(255, 255, 255));
@@ -153,7 +155,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jScrollPane3.setViewportView(txtAntig);
 
         jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(320, 190, 180, 30);
+        jScrollPane3.setBounds(320, 160, 180, 30);
 
         txtNom.setEditable(false);
         txtNom.setBackground(new java.awt.Color(255, 255, 255));
@@ -162,13 +164,26 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
         jScrollPane5.setViewportView(txtNom);
 
         jPanel1.add(jScrollPane5);
-        jScrollPane5.setBounds(320, 70, 180, 30);
+        jScrollPane5.setBounds(320, 60, 180, 30);
+
+        txtEmp.setEditable(false);
+        txtEmp.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmp.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtEmp);
+        txtEmp.setBounds(320, 270, 180, 30);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Cel:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(260, 210, 40, 25);
 
         txtCel.setBackground(new java.awt.Color(255, 255, 255));
         txtCel.setForeground(new java.awt.Color(0, 0, 0));
         txtCel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtCel);
-        txtCel.setBounds(320, 250, 180, 30);
+        txtCel.setBounds(320, 210, 180, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,8 +232,19 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
             this.txtCi.setText(man.getCi());
             this.txtAntig.setText("" + man.getAntiguedad());
             this.txtCel.setText(man.getCelular());
-        }
 
+            if (modelo.empACargo(man) != 0) {
+
+                this.txtEmp.setText("" + modelo.empACargo(man));
+
+            } else {
+
+                this.txtEmp.setText("Sin Empleados");
+
+            }
+   
+            
+        }
 
     }//GEN-LAST:event_listaManagersValueChanged
 
@@ -230,6 +256,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -239,6 +266,7 @@ public class MgModificacion extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextPane txtAntig;
     private javax.swing.JTextField txtCel;
     private javax.swing.JTextPane txtCi;
+    private javax.swing.JTextField txtEmp;
     private javax.swing.JTextPane txtNom;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;

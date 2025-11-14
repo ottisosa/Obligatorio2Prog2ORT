@@ -44,7 +44,7 @@ public class Sistema extends Observable {
     }
 
     public ArrayList<Manager> getListaManagers() {
-        
+
         this.ordenarManagerPorAntiguedad(this.listaManagers);
 
         return listaManagers;
@@ -107,6 +107,22 @@ public class Sistema extends Observable {
 
     }
 
+    public int empACargo(Manager man) {
+
+        int cantidad = 0;
+
+        for (int i = 0; i < this.listaEmpleados.size(); i++) {
+
+            if (this.listaEmpleados.get(i).getManager().nombre.equals(man.getNombre())) {
+
+                cantidad += 1;
+            }
+
+        }
+
+        return cantidad;
+    }
+
     public ArrayList<Area> getListaAreasSinEmp() {
         ArrayList<Area> arSinEmp = new ArrayList<>();
         for (int i = 0; i < this.listaAreas.size(); i++) {
@@ -128,12 +144,12 @@ public class Sistema extends Observable {
         Collections.sort(listaArea);
     }
 
-    public void ordenarManagerPorAntiguedad(ArrayList<Manager> listaManagers){
-    
+    public void ordenarManagerPorAntiguedad(ArrayList<Manager> listaManagers) {
+
         Collections.sort(listaManagers);
     }
-    
-    public void ordenarEmpleadoPorSalario(ArrayList<Empleado> listaEmpleados){
+
+    public void ordenarEmpleadoPorSalario(ArrayList<Empleado> listaEmpleados) {
         Collections.sort(listaEmpleados);
     }
 
