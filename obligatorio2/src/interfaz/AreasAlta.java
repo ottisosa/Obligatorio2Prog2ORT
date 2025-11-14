@@ -1,10 +1,9 @@
 package interfaz;
-
-// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
 import dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
+
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
 public class AreasAlta extends javax.swing.JFrame implements Observer {
 

@@ -5,6 +5,7 @@ package interfaz;
 import dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
+import java.io.*;
 
 public class EmpAlta extends javax.swing.JFrame implements Observer{
     
@@ -29,7 +30,30 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
                 if(!this.modelo.verificarCedula(this.txtCI.getText())){
                     try{
                         if(this.calcularSalario()){
+                            int sal = Integer.parseInt(this.txtSalario.getText());
+                            Manager man = this.manager;
+                            Area ar = this.area;
+                            String nom = this.txtNom.getText();
+                            String ci = this.txtCI.getText();
+                            String cel = this.txtCel.getText();
                             
+                            Empleado empleado = new Empleado(sal, man, ar, nom, ci, cel, this.modelo);
+                            
+                            File dirCv = new File(System.getProperty("user.dir")+File.separator+"CVs");
+                            if(!dirCv.exists()){
+                                dirCv.mkdir();
+                            }
+                            
+                            
+                            this.txtSalario.setText("");
+                            this.txtManager.setText("");
+                            this.txtArea.setText("");
+                            this.txtNom.setText("");
+                            this.txtCI.setText("");
+                            this.txtCel.setText("");
+                            this.txtCv.setText("");
+                            
+                            this.cargarLista();
                         }
                         else{
                             JOptionPane.showMessageDialog(null, "Area no tiene suficiente presupuesto", "ERROR", 0);
