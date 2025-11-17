@@ -12,6 +12,7 @@ public class RepInteligente extends javax.swing.JFrame implements Observer{
         initComponents();
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
+        this.modelo.addObserver(this);
         this.comboEmp.removeAllItems();
         this.gemini = new Gemini();
         this.reloj = new ImageIcon(getClass().getResource("/img/reloj.png"));
