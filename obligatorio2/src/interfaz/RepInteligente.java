@@ -89,6 +89,7 @@ public class RepInteligente extends javax.swing.JFrame implements Observer{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reporte de movimientos");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
@@ -179,6 +180,7 @@ public class RepInteligente extends javax.swing.JFrame implements Observer{
         panelReporte.add(jLabel11);
         jLabel11.setBounds(40, 10, 250, 32);
 
+        txtReporte.setEditable(false);
         txtReporte.setBackground(new java.awt.Color(255, 255, 255));
         txtReporte.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane6.setViewportView(txtReporte);
