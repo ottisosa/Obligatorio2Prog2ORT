@@ -37,7 +37,7 @@ public class Gemini {
         String nomCV = "/CV"+emp.getCi()+".txt";
         File dirCV = new File(System.getProperty("user.dir")+File.separator+"CVs"+nomCV);
         if(dirCV.exists()){
-            ArchLectura arch = new ArchLectura(nomCV);
+            ArchLectura arch = new ArchLectura("CVs"+nomCV);
             String cv = "";
             while(arch.hayMasLineas()){
                 cv += arch.linea();
@@ -85,15 +85,22 @@ public class Gemini {
                     
                     
                     IMPORTANTE - FORMATO DEL REPORTE:
-                    solamente debe redactar el reporte con el siguiente formato entre comillas('), con libertad para desarrollar lo pedido entre asteriscos (*):
+                    solamente debe redactar el reporte con el siguiente formato, marcado entre comillas(') con libertad para desarrollar lo pedido entre asteriscos (*) 
+                    (LAS COMILLAS Y LOS ASTERISCOS NO SE IMPRIMEN, SON SOLO PARA MARCAR EL FORMATO QUE TIENE QUE SEGUIR)
+                    (SOLAMENTE ESCRIBA TEXTO, NO UTILIZE SIMBOLOS O EMOJIS QUE NO PUEDEN APARECER EN UN JTextPanel DE JAVA):
+                    
                     ' REPORTE INTELIGENTE
-                    *describir movimiento a realizar*
+                    *describir muy brevemente movimiento a realizar*
+                    
                     Ventajas: 
                     *lista de ventajas*
+                    
                     Desventajas:
                     *lista de desventajas*
+                    
                     Conclusion:
                     *breve conclusion sobre si se deberia realizar o no el movimiento* '
+                    
                     
             """, nomEmp, salEmp, cv, nomOrigen, descOrigen, presOrigen, nomDestino, descDestino, presDestino);
         }

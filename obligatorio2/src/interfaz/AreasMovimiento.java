@@ -222,5 +222,5 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
     private javax.swing.JList listaAreas;
     private javax.swing.JList listaAreas2;
     // End of variables declaration//GEN-END:variables
-private Sistema modelo;
+    private Sistema modelo;
 }
