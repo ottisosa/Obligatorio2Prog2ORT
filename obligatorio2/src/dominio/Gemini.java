@@ -85,11 +85,9 @@ public class Gemini {
                     
                     
                     IMPORTANTE - FORMATO DEL REPORTE:
-                    solamente debe redactar el reporte con el siguiente formato, marcado entre comillas(') con libertad para desarrollar lo pedido entre asteriscos (*) 
-                    (LAS COMILLAS Y LOS ASTERISCOS NO SE IMPRIMEN, SON SOLO PARA MARCAR EL FORMATO QUE TIENE QUE SEGUIR)
-                    (SOLAMENTE ESCRIBA TEXTO, NO UTILIZE SIMBOLOS O EMOJIS QUE NO PUEDEN APARECER EN UN JTextPanel DE JAVA):
+                    solamente debe redactar el reporte con el siguiente formato:
                     
-                    ' REPORTE INTELIGENTE
+                    REPORTE INTELIGENTE
                     *describir muy brevemente movimiento a realizar*
                     
                     Ventajas: 
@@ -99,7 +97,7 @@ public class Gemini {
                     *lista de desventajas*
                     
                     Conclusion:
-                    *breve conclusion sobre si se deberia realizar o no el movimiento* '
+                    *breve conclusion sobre si se deberia realizar o no el movimiento*
                     
                     
             """, nomEmp, salEmp, cv, nomOrigen, descOrigen, presOrigen, nomDestino, descDestino, presDestino);
