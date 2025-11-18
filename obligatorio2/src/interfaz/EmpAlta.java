@@ -137,6 +137,7 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
         txtCv = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar empleado");
         setResizable(false);
         getContentPane().setLayout(null);
 
