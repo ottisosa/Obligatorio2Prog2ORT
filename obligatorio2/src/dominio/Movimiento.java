@@ -1,13 +1,15 @@
 package dominio;
 
-public class Movimiento {
+public class Movimiento implements Comparable<Movimiento>{
     private String mes;
+    private int nroMes;
     private Empleado emp;
     private Area origen;
     private Area destino;
 
-    public Movimiento(String mes, Empleado emp, Area origen, Area destino) {
+    public Movimiento(String mes, int nroMes, Empleado emp, Area origen, Area destino) {
         this.mes = mes;
+        this.nroMes = nroMes;
         this.emp = emp;
         this.origen = origen;
         this.destino = destino;
@@ -44,6 +46,17 @@ public class Movimiento {
     public void setDestino(Area destino) {
         this.destino = destino;
     }
+
+    public int getNroMes() {
+        return nroMes;
+    }
+
+    public void setNroMes(int nroMes) {
+        this.nroMes = nroMes;
+    }
     
-    
+    @Override
+    public int compareTo(Movimiento mov) {
+        return this.nroMes - mov.getNroMes();
+    }
 }

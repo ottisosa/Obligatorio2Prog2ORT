@@ -9,12 +9,14 @@ public class Sistema extends Observable {
     private ArrayList<Empleado> listaEmpleados;
     private ArrayList<Manager> listaManagers;
     private ArrayList<Area> listaAreas;
+    private ArrayList<Movimiento> listaMovimientos;
 
-    public Sistema(ArrayList<Persona> listaPersonas, ArrayList<Empleado> listaEmpleados, ArrayList<Manager> listaManagers, ArrayList<Area> listaAreas) {
+    public Sistema(ArrayList<Persona> listaPersonas, ArrayList<Empleado> listaEmpleados, ArrayList<Manager> listaManagers, ArrayList<Area> listaAreas, ArrayList<Movimiento> listaMovimientos) {
         this.listaPersonas = listaPersonas;
         this.listaEmpleados = listaEmpleados;
         this.listaManagers = listaManagers;
         this.listaAreas = listaAreas;
+        this.listaMovimientos = listaMovimientos;
     }
 
     public Sistema() {
@@ -78,6 +80,18 @@ public class Sistema extends Observable {
         this.setChanged();
         this.notifyObservers();
     }
+
+    public ArrayList<Movimiento> getListaMovimientos() {
+        this.ordenarMovimientoPorMes(this.listaMovimientos);
+        return this.listaMovimientos;
+    }
+
+    public void addListaMovimientos(Movimiento mov) {
+        this.listaMovimientos.add(mov);
+        this.setChanged();
+        this.notifyObservers();
+    }
+    
 
     public void modificacion() {
         this.setChanged();
@@ -151,6 +165,10 @@ public class Sistema extends Observable {
 
     public void ordenarEmpleadoPorSalario(ArrayList<Empleado> listaEmpleados) {
         Collections.sort(listaEmpleados);
+    }
+    
+    public void ordenarMovimientoPorMes(ArrayList<Movimiento> listaMovimientos){
+        Collections.sort(listaMovimientos);
     }
 
 }
