@@ -169,13 +169,18 @@ public class Sistema extends Observable {
     public void ordenarMovimientoPorMes(ArrayList<Movimiento> listaMovimientos) {
         Collections.sort(listaMovimientos);
     }
+    
+    public void ordenarAreaPorcentaje(ArrayList<Area> listaAreas){
+        
+        Collections.sort(listaAreas,new porcentajeAreas());
+    }
 
     private class porcentajeAreas implements Comparator<Area> {
 
         @Override
         public int compare(Area ar1, Area ar2) {
             
-            return Long.compare(ar2.porcentajeP(ar2.getPresupuesto(), ar2.getProsupuestoTotal()), ar1.porcentajeP(ar1.getPresupuesto(), ar1.getProsupuestoTotal()));
+            return Long.compare(ar2.porcentajeP(), ar1.porcentajeP());
     }
 
 }

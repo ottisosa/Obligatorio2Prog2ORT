@@ -18,8 +18,8 @@ public class RepAreas extends javax.swing.JFrame implements Observer {
     }
 
     public void cargarLista() {
-
-        this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
+        
+       this.modelo.ordenarAreaPorcentaje(this.listaAreas.setListData(this.modelo.getListaAreas().toArray()));
 
     }
 
