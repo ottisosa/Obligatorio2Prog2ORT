@@ -1,13 +1,11 @@
-
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
 package interfaz;
+
 import dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class AreasBaja extends javax.swing.JFrame implements Observer{
-
+public class AreasBaja extends javax.swing.JFrame implements Observer {
 
     public AreasBaja(Sistema sistema) {
         initComponents();
@@ -16,17 +14,19 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
         this.modelo.addObserver(this);
         this.cargarListaSinEmp();
     }
-    
+
     public void cargarListaSinEmp() {
+        
+        this.modelo.ordenarAreaPorNombre(this.modelo.getListaAreas());
+
         this.listaAreas.setListData(this.modelo.getListaAreasSinEmp().toArray());
     }
-    
+
     @Override
-    public void update(Observable o, Object arg){
+    public void update(Observable o, Object arg) {
         this.cargarListaSinEmp();
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -153,23 +153,22 @@ public class AreasBaja extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged
-        if(this.listaAreas.getSelectedValue()!=null){
-            Area ar = (Area)this.listaAreas.getSelectedValue();
+        if (this.listaAreas.getSelectedValue() != null) {
+            Area ar = (Area) this.listaAreas.getSelectedValue();
             this.textoNom.setText(ar.getNombre());
             this.textoDesc.setText(ar.getDescripcion());
-            this.textoPres.setText(""+ar.getPresupuesto());
+            this.textoPres.setText("" + ar.getPresupuesto());
         }
     }//GEN-LAST:event_listaAreasValueChanged
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(this.listaAreas.getSelectedValue()!=null){
-            this.modelo.eliminarListaAreas((Area)this.listaAreas.getSelectedValue());
+        if (this.listaAreas.getSelectedValue() != null) {
+            this.modelo.eliminarListaAreas((Area) this.listaAreas.getSelectedValue());
             this.cargarListaSinEmp();
             this.textoNom.setText("");
             this.textoDesc.setText("");
             this.textoPres.setText("");
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione un area a eliminar", "ERROR", 0);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed

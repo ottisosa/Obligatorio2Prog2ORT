@@ -5,7 +5,7 @@ import dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class AreasMovimiento extends javax.swing.JFrame implements Observer{
+public class AreasMovimiento extends javax.swing.JFrame implements Observer {
 
     public AreasMovimiento(Sistema sistema) {
         initComponents();
@@ -14,67 +14,66 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
         this.modelo.addObserver(this);
         this.cargarListas();
     }
-    
-    public void cargarListas(){
+
+    public void cargarListas() {
+
+        this.modelo.ordenarAreaPorNombre(this.modelo.getListaAreas());
+
         this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
         this.listaAreas2.setListData(this.modelo.getListaAreas().toArray());
     }
-    
-    public void cargarEmp(Area area){
+
+    public void cargarEmp(Area area) {
         ArrayList<Empleado> listaEmp = this.modelo.getListaEmpleados();
         this.comboEmp.removeAllItems();
         for (int i = 0; i < listaEmp.size(); i++) {
-            if(listaEmp.get(i).getArea().equals(area)){
+            if (listaEmp.get(i).getArea().equals(area)) {
                 this.comboEmp.addItem(listaEmp.get(i));
             }
         }
-        if (this.comboEmp.getItemCount()==0){
+        if (this.comboEmp.getItemCount() == 0) {
             this.comboEmp.addItem("Sin empleados");
         }
     }
-    
-    public void moverEmp(){
-        if(this.listaAreas.getSelectedValue()!=null && this.listaAreas2.getSelectedValue()!=null){
+
+    public void moverEmp() {
+        if (this.listaAreas.getSelectedValue() != null && this.listaAreas2.getSelectedValue() != null) {
             System.out.println(this.comboEmp.getSelectedItem());
-            if(!(this.comboEmp.getSelectedItem().equals("Sin empleados"))){
-                long salTotal = this.calcularSalarioTotal((Empleado)this.comboEmp.getSelectedItem());
-                if((((Area)this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal)>=0){
-                    ((Empleado)this.comboEmp.getSelectedItem()).setArea((Area)this.listaAreas2.getSelectedValue());
-                    ((Area)this.listaAreas2.getSelectedValue()).setPresupuesto(((Area)this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal);
-                    ((Area)this.listaAreas.getSelectedValue()).setPresupuesto(((Area)this.listaAreas.getSelectedValue()).getPresupuesto() + salTotal);
-                    
+            if (!(this.comboEmp.getSelectedItem().equals("Sin empleados"))) {
+                long salTotal = this.calcularSalarioTotal((Empleado) this.comboEmp.getSelectedItem());
+                if ((((Area) this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal) >= 0) {
+                    ((Empleado) this.comboEmp.getSelectedItem()).setArea((Area) this.listaAreas2.getSelectedValue());
+                    ((Area) this.listaAreas2.getSelectedValue()).setPresupuesto(((Area) this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal);
+                    ((Area) this.listaAreas.getSelectedValue()).setPresupuesto(((Area) this.listaAreas.getSelectedValue()).getPresupuesto() + salTotal);
+
                     this.modelo.modificacion();
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Presupuesto no es suficiente", "ERROR", 0);
                 }
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Seleccione empleado a transferir", "ERROR", 0);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione areas de origen y transferencia", "ERROR", 0);
         }
     }
-    
-    public long calcularSalarioTotal(Empleado emp){
+
+    public long calcularSalarioTotal(Empleado emp) {
         long salarioTotal = -1;
         int mes = this.comboMes.getSelectedIndex();
-        if(mes<0){
+        if (mes < 0) {
             JOptionPane.showMessageDialog(null, "Seleccione el mes de transferencia", "ERROR", 0);
-        }
-        else{
-            salarioTotal = (((Empleado)this.comboEmp.getSelectedItem()).getSalario())*(12-mes);
+        } else {
+            salarioTotal = (((Empleado) this.comboEmp.getSelectedItem()).getSalario()) * (12 - mes);
         }
         return salarioTotal;
     }
-    
+
     @Override
-    public void update(Observable o, Object arg){
+    public void update(Observable o, Object arg) {
         this.cargarListas();
-        if(this.listaAreas.getSelectedValue()!=null){
-            this.cargarEmp((Area)this.listaAreas.getSelectedValue());
+        if (this.listaAreas.getSelectedValue() != null) {
+            this.cargarEmp((Area) this.listaAreas.getSelectedValue());
         }
     }
 
@@ -200,7 +199,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaAreasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAreasValueChanged
-        this.cargarEmp((Area)this.listaAreas.getSelectedValue());
+        this.cargarEmp((Area) this.listaAreas.getSelectedValue());
     }//GEN-LAST:event_listaAreasValueChanged
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed

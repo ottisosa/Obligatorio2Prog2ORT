@@ -1,11 +1,10 @@
 package interfaz;
+
 import dominio.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
-
 public class AreasModificacion extends javax.swing.JFrame implements Observer {
 
     public AreasModificacion(Sistema sistema) {
@@ -18,6 +17,8 @@ public class AreasModificacion extends javax.swing.JFrame implements Observer {
     }
 
     public void cargarLista() {
+
+        this.modelo.ordenarAreaPorNombre(this.modelo.getListaAreas());
 
         this.listaAreas.setListData(this.modelo.getListaAreas().toArray());
 
