@@ -12,36 +12,40 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
         this.modelo.addObserver(this);
-        this.cargarCombos();
         this.cargarLista();
+        this.cargarCombos();
     }
     
     public void cargarLista(){
-        ArrayList<Movimiento> listaMov = this.modelo.getListaMovimientos();
-        if(this.mes!=null){
-            for (int i = listaMov.size(); i >= 0; i--) {
-                if(!(listaMov.get(i).getMes().equals(this.mes))){
+        ArrayList<Movimiento> listaMov = new ArrayList<>();
+        for (int i = 0; i < this.modelo.getListaMovimientos().size(); i++) {
+            listaMov.add(this.modelo.getListaMovimientos().get(i));
+        }
+        
+        if(this.comboMes.getSelectedIndex()!=0){
+            for (int i = listaMov.size()-1; i >= 0; i--) {
+                if(!(listaMov.get(i).getMes().equals(this.comboMes.getSelectedItem()))){
                     listaMov.remove(i);
                 }
             }
         }
-        if(this.origen!=null){
-            for (int i = listaMov.size(); i >= 0; i--) {
-                if(!(listaMov.get(i).getOrigen().equals(this.origen))){
+        if(this.comboOrigen.getSelectedIndex()!=0){
+            for (int i = listaMov.size()-1; i >= 0; i--) {
+                if(!(listaMov.get(i).getOrigen().equals(this.comboOrigen.getSelectedItem()))){
                     listaMov.remove(i);
                 }
             }
         }
-        if(this.destino!=null){
-            for (int i = listaMov.size(); i >= 0; i--) {
-                if(!(listaMov.get(i).getDestino().equals(this.destino))){
+        if(this.comboDestino.getSelectedIndex()!=0){
+            for (int i = listaMov.size()-1; i >= 0; i--) {
+                if(!(listaMov.get(i).getDestino().equals(this.comboDestino.getSelectedItem()))){
                     listaMov.remove(i);
                 }
             }
         }
-        if(this.empleado!=null){
-            for (int i = listaMov.size(); i >= 0; i--) {
-                if(!(listaMov.get(i).getEmp().equals(this.empleado))){
+        if(this.comboEmpleado.getSelectedIndex()!=0){
+            for (int i = listaMov.size()-1; i >= 0; i--) {
+                if(!(listaMov.get(i).getEmp().equals(this.comboEmpleado.getSelectedItem()))){
                     listaMov.remove(i);
                 }
             }
@@ -69,9 +73,14 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         }
     }
     
+    public void cargarDatos(){
+        
+    }
+    
     @Override
     public void update(Observable o, Object arg){
         this.cargarLista();
+        this.cargarCombos();
     }
 
     @SuppressWarnings("unchecked")
@@ -114,6 +123,11 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        listaMovimientos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaMovimientosValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(listaMovimientos);
 
@@ -165,7 +179,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         comboMes.setBackground(new java.awt.Color(255, 255, 255));
         comboMes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboMes.setForeground(new java.awt.Color(0, 0, 0));
-        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtrar", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         comboMes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboMes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboMes.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +193,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         comboOrigen.setBackground(new java.awt.Color(255, 255, 255));
         comboOrigen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboOrigen.setForeground(new java.awt.Color(0, 0, 0));
-        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtrar" }));
+        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtro" }));
         comboOrigen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboOrigen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboOrigen.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +207,8 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         comboEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         comboEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboEmpleado.setForeground(new java.awt.Color(0, 0, 0));
-        comboEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtrar" }));
+        comboEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtro" }));
+        comboEmpleado.setToolTipText("");
         comboEmpleado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +246,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         comboDestino.setBackground(new java.awt.Color(255, 255, 255));
         comboDestino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboDestino.setForeground(new java.awt.Color(0, 0, 0));
-        comboDestino.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtrar" }));
+        comboDestino.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtro" }));
         comboDestino.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboDestino.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboDestino.addActionListener(new java.awt.event.ActionListener() {
@@ -255,44 +270,24 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMesActionPerformed
-        if(this.comboMes.getSelectedItem()!="Sin filtro"){
-            this.mes = (String)this.comboMes.getSelectedItem();
-        }
-        else{
-            this.mes = null;
-        }
         this.cargarLista();
     }//GEN-LAST:event_comboMesActionPerformed
 
     private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
-        if(this.comboOrigen.getSelectedItem()!="Sin filtro"){
-            this.origen = (Area)this.comboOrigen.getSelectedItem();
-        }
-        else{
-            this.origen = null;
-        }
         this.cargarLista();
     }//GEN-LAST:event_comboOrigenActionPerformed
 
     private void comboDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoActionPerformed
-        if(this.comboDestino.getSelectedItem()!="Sin filtro"){
-            this.destino = (Area)this.comboDestino.getSelectedItem();
-        }
-        else{
-            this.destino = null;
-        }
         this.cargarLista();
     }//GEN-LAST:event_comboDestinoActionPerformed
 
     private void comboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadoActionPerformed
-        if(this.comboEmpleado.getSelectedItem()!="Sin filtro"){
-            this.empleado = (Empleado)this.comboEmpleado.getSelectedItem();
-        }
-        else{
-            this.empleado = null;
-        }
         this.cargarLista();
     }//GEN-LAST:event_comboEmpleadoActionPerformed
+
+    private void listaMovimientosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaMovimientosValueChanged
+        this.cargarDatos();
+    }//GEN-LAST:event_listaMovimientosValueChanged
 
 
 
@@ -318,8 +313,4 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel txtOrigen;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
-    private Area origen;
-    private Area destino;
-    private String mes;
-    private Empleado empleado;
 }

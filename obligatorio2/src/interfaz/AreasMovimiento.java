@@ -45,7 +45,14 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer {
                     ((Empleado) this.comboEmp.getSelectedItem()).setArea((Area) this.listaAreas2.getSelectedValue());
                     ((Area) this.listaAreas2.getSelectedValue()).setPresupuesto(((Area) this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal);
                     ((Area) this.listaAreas.getSelectedValue()).setPresupuesto(((Area) this.listaAreas.getSelectedValue()).getPresupuesto() + salTotal);
-
+                    
+                    String mes = (String)this.comboMes.getSelectedItem();
+                    int nroMes = this.comboMes.getSelectedIndex();
+                    Empleado emp = (Empleado)this.comboEmp.getSelectedItem();
+                    Area origen = (Area)this.listaAreas.getSelectedValue();
+                    Area destino = (Area)this.listaAreas2.getSelectedValue();
+                    Movimiento mov = new Movimiento(mes, nroMes, emp, origen, destino, this.modelo);
+                    
                     this.modelo.modificacion();
                 } else {
                     JOptionPane.showMessageDialog(null, "Presupuesto no es suficiente", "ERROR", 0);

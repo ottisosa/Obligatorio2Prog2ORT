@@ -6,13 +6,16 @@ public class Movimiento implements Comparable<Movimiento>{
     private Empleado emp;
     private Area origen;
     private Area destino;
+    private Sistema modelo;
 
-    public Movimiento(String mes, int nroMes, Empleado emp, Area origen, Area destino) {
+    public Movimiento(String mes, int nroMes, Empleado emp, Area origen, Area destino, Sistema sis) {
         this.mes = mes;
         this.nroMes = nroMes;
         this.emp = emp;
         this.origen = origen;
         this.destino = destino;
+        this.modelo = sis;
+        this.modelo.addListaMovimientos(this);
     }
 
     public String getMes() {
