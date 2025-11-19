@@ -3,15 +3,50 @@ package interfaz;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
 import dominio.*;
+import java.util.*;
 
-public class RepMovimientos extends javax.swing.JFrame {
+public class RepMovimientos extends javax.swing.JFrame implements Observer{
     
     public RepMovimientos(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
+        this.modelo.addObserver(this);
+        this.cargarCombos();
+        this.cargarLista();
     }
-
+    
+    public void cargarLista(){
+        this.modelo.ordenarMovimientoPorMes(this.modelo.getListaMovimientos());
+        if(this.mes!=null && this.origen!=null && this.origen!=null && this.origen!=null){
+            this.listaMovimientos.setListData(this.modelo.getListaMovimientos().toArray());
+        }
+    }
+    
+    public void cargarCombos(){
+        ArrayList<Area> listaAr = this.modelo.getListaAreas();
+        ArrayList<Empleado> listaEmp = this.modelo.getListaEmpleados();
+        this.comboOrigen.removeAllItems();
+        this.comboOrigen.addItem("Sin filtro");
+        for (int i = 0; i < listaAr.size(); i++) {
+                this.comboOrigen.addItem(listaAr.get(i));
+        }
+        this.comboDestino.removeAllItems();
+        this.comboDestino.addItem("Sin filtro");
+        for (int i = 0; i < listaAr.size(); i++) {
+                this.comboDestino.addItem(listaAr.get(i));
+        }
+        this.comboEmpleado.removeAllItems();
+        this.comboEmpleado.addItem("Sin filtro");
+        for (int i = 0; i < listaEmp.size(); i++) {
+                this.comboEmpleado.addItem(listaEmp.get(i));
+        }
+    }
+    
+    @Override
+    public void update(Observable o, Object arg){
+        this.cargarLista();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -21,12 +56,21 @@ public class RepMovimientos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaMovimientos = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        txtEmpleado = new javax.swing.JLabel();
+        txtOrigen = new javax.swing.JLabel();
+        txtDestino = new javax.swing.JLabel();
+        txtMes = new javax.swing.JLabel();
         comboMes = new javax.swing.JComboBox<>();
-        comboMes1 = new javax.swing.JComboBox<>();
-        comboMes2 = new javax.swing.JComboBox<>();
+        comboOrigen = new javax.swing.JComboBox();
+        comboEmpleado = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        comboDestino = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reporte de movimientos");
@@ -48,19 +92,13 @@ public class RepMovimientos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaMovimientos);
 
         panel.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 50, 154, 247);
+        jScrollPane1.setBounds(20, 70, 154, 270);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Movimientos:");
+        jLabel1.setText("Filtrar por:");
         panel.add(jLabel1);
-        jLabel1.setBounds(20, 10, 170, 32);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Filtrar:");
-        panel.add(jLabel4);
-        jLabel4.setBounds(230, 20, 110, 30);
+        jLabel1.setBounds(210, 40, 150, 32);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
         jPanel1.setLayout(null);
@@ -71,55 +109,187 @@ public class RepMovimientos extends javax.swing.JFrame {
         jPanel1.add(jLabel5);
         jLabel5.setBounds(30, 10, 150, 30);
 
+        txtEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmpleado.setText("Empleado");
+        jPanel1.add(txtEmpleado);
+        txtEmpleado.setBounds(20, 210, 110, 30);
+
+        txtOrigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtOrigen.setForeground(new java.awt.Color(255, 255, 255));
+        txtOrigen.setText("Origen");
+        jPanel1.add(txtOrigen);
+        txtOrigen.setBounds(20, 110, 110, 30);
+
+        txtDestino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDestino.setForeground(new java.awt.Color(255, 255, 255));
+        txtDestino.setText("Destino");
+        jPanel1.add(txtDestino);
+        txtDestino.setBounds(20, 160, 110, 30);
+
+        txtMes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtMes.setForeground(new java.awt.Color(255, 255, 255));
+        txtMes.setText("Mes");
+        jPanel1.add(txtMes);
+        txtMes.setBounds(20, 60, 110, 30);
+
         panel.add(jPanel1);
-        jPanel1.setBounds(350, 40, 170, 260);
+        jPanel1.setBounds(350, 80, 170, 270);
 
         comboMes.setBackground(new java.awt.Color(255, 255, 255));
         comboMes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboMes.setForeground(new java.awt.Color(0, 0, 0));
-        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        comboMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtrar", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         comboMes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         comboMes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        comboMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboMesActionPerformed(evt);
+            }
+        });
         panel.add(comboMes);
-        comboMes.setBounds(200, 80, 130, 22);
+        comboMes.setBounds(200, 110, 130, 22);
 
-        comboMes1.setBackground(new java.awt.Color(255, 255, 255));
-        comboMes1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboMes1.setForeground(new java.awt.Color(0, 0, 0));
-        comboMes1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        comboMes1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        comboMes1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panel.add(comboMes1);
-        comboMes1.setBounds(200, 150, 130, 22);
+        comboOrigen.setBackground(new java.awt.Color(255, 255, 255));
+        comboOrigen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboOrigen.setForeground(new java.awt.Color(0, 0, 0));
+        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtrar" }));
+        comboOrigen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        comboOrigen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        comboOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOrigenActionPerformed(evt);
+            }
+        });
+        panel.add(comboOrigen);
+        comboOrigen.setBounds(200, 180, 130, 22);
 
-        comboMes2.setBackground(new java.awt.Color(255, 255, 255));
-        comboMes2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboMes2.setForeground(new java.awt.Color(0, 0, 0));
-        comboMes2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        comboMes2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        comboMes2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panel.add(comboMes2);
-        comboMes2.setBounds(200, 230, 130, 22);
+        comboEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        comboEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboEmpleado.setForeground(new java.awt.Color(0, 0, 0));
+        comboEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtrar" }));
+        comboEmpleado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        comboEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        comboEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEmpleadoActionPerformed(evt);
+            }
+        });
+        panel.add(comboEmpleado);
+        comboEmpleado.setBounds(200, 320, 130, 22);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Empleado");
+        panel.add(jLabel7);
+        jLabel7.setBounds(200, 290, 110, 30);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Mes");
+        panel.add(jLabel11);
+        jLabel11.setBounds(200, 80, 110, 30);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Origen");
+        panel.add(jLabel12);
+        jLabel12.setBounds(200, 150, 110, 30);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Destino");
+        panel.add(jLabel13);
+        jLabel13.setBounds(200, 220, 110, 30);
+
+        comboDestino.setBackground(new java.awt.Color(255, 255, 255));
+        comboDestino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboDestino.setForeground(new java.awt.Color(0, 0, 0));
+        comboDestino.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sin filtrar" }));
+        comboDestino.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        comboDestino.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        comboDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDestinoActionPerformed(evt);
+            }
+        });
+        panel.add(comboDestino);
+        comboDestino.setBounds(200, 250, 130, 22);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Movimientos:");
+        panel.add(jLabel2);
+        jLabel2.setBounds(20, 30, 170, 32);
 
         getContentPane().add(panel);
-        panel.setBounds(0, 0, 550, 370);
+        panel.setBounds(0, 0, 570, 390);
 
-        setBounds(0, 0, 554, 362);
+        setBounds(0, 0, 578, 394);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMesActionPerformed
+        if(this.comboMes.getSelectedItem()!="Sin filtro"){
+            this.mes = (String)this.comboMes.getSelectedItem();
+        }
+        else{
+            this.mes = null;
+        }
+    }//GEN-LAST:event_comboMesActionPerformed
+
+    private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
+        if(this.comboOrigen.getSelectedItem()!="Sin filtro"){
+            this.origen = (Area)this.comboOrigen.getSelectedItem();
+        }
+        else{
+            this.origen = null;
+        }
+    }//GEN-LAST:event_comboOrigenActionPerformed
+
+    private void comboDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoActionPerformed
+        if(this.comboDestino.getSelectedItem()!="Sin filtro"){
+            this.destino = (Area)this.comboDestino.getSelectedItem();
+        }
+        else{
+            this.destino = null;
+        }
+    }//GEN-LAST:event_comboDestinoActionPerformed
+
+    private void comboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadoActionPerformed
+        if(this.comboEmpleado.getSelectedItem()!="Sin filtro"){
+            this.empleado = (Empleado)this.comboEmpleado.getSelectedItem();
+        }
+        else{
+            this.empleado = null;
+        }
+    }//GEN-LAST:event_comboEmpleadoActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox comboDestino;
+    private javax.swing.JComboBox comboEmpleado;
     private javax.swing.JComboBox<String> comboMes;
-    private javax.swing.JComboBox<String> comboMes1;
-    private javax.swing.JComboBox<String> comboMes2;
+    private javax.swing.JComboBox comboOrigen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listaMovimientos;
     private javax.swing.JPanel panel;
+    private javax.swing.JLabel txtDestino;
+    private javax.swing.JLabel txtEmpleado;
+    private javax.swing.JLabel txtMes;
+    private javax.swing.JLabel txtOrigen;
     // End of variables declaration//GEN-END:variables
-private Sistema modelo;
+    private Sistema modelo;
+    private Area origen;
+    private Area destino;
+    private String mes;
+    private Empleado empleado;
 }
