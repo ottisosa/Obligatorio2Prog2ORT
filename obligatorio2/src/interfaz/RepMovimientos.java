@@ -17,10 +17,36 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     }
     
     public void cargarLista(){
-        this.modelo.ordenarMovimientoPorMes(this.modelo.getListaMovimientos());
-        if(this.mes!=null && this.origen!=null && this.origen!=null && this.origen!=null){
-            this.listaMovimientos.setListData(this.modelo.getListaMovimientos().toArray());
+        ArrayList<Movimiento> listaMov = this.modelo.getListaMovimientos();
+        if(this.mes!=null){
+            for (int i = listaMov.size(); i >= 0; i--) {
+                if(!(listaMov.get(i).getMes().equals(this.mes))){
+                    listaMov.remove(i);
+                }
+            }
         }
+        if(this.origen!=null){
+            for (int i = listaMov.size(); i >= 0; i--) {
+                if(!(listaMov.get(i).getOrigen().equals(this.origen))){
+                    listaMov.remove(i);
+                }
+            }
+        }
+        if(this.destino!=null){
+            for (int i = listaMov.size(); i >= 0; i--) {
+                if(!(listaMov.get(i).getDestino().equals(this.destino))){
+                    listaMov.remove(i);
+                }
+            }
+        }
+        if(this.empleado!=null){
+            for (int i = listaMov.size(); i >= 0; i--) {
+                if(!(listaMov.get(i).getEmp().equals(this.empleado))){
+                    listaMov.remove(i);
+                }
+            }
+        }
+        this.listaMovimientos.setListData(listaMov.toArray());
     }
     
     public void cargarCombos(){
@@ -235,6 +261,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         else{
             this.mes = null;
         }
+        this.cargarLista();
     }//GEN-LAST:event_comboMesActionPerformed
 
     private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
@@ -244,6 +271,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         else{
             this.origen = null;
         }
+        this.cargarLista();
     }//GEN-LAST:event_comboOrigenActionPerformed
 
     private void comboDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoActionPerformed
@@ -253,6 +281,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         else{
             this.destino = null;
         }
+        this.cargarLista();
     }//GEN-LAST:event_comboDestinoActionPerformed
 
     private void comboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadoActionPerformed
@@ -262,6 +291,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         else{
             this.empleado = null;
         }
+        this.cargarLista();
     }//GEN-LAST:event_comboEmpleadoActionPerformed
 
 
