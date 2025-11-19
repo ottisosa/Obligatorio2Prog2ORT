@@ -87,6 +87,7 @@ public class RepAreas extends javax.swing.JFrame implements Observer {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        listaAreas.setCellRenderer(null);
         listaAreas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaAreasValueChanged(evt);
