@@ -14,6 +14,8 @@ public class RepAreas extends javax.swing.JFrame implements Observer {
         this.modelo = sistema;
         this.modelo.addObserver(this);
         this.cargarLista();
+        listaAreas.setCellRenderer(new Renderer());
+
 
     }
 
