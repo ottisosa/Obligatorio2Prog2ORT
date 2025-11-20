@@ -40,7 +40,7 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer {
         if (this.listaAreas.getSelectedValue() != null && this.listaAreas2.getSelectedValue() != null) {
             System.out.println(this.comboEmp.getSelectedItem());
             if (!(this.comboEmp.getSelectedItem().equals("Sin empleados"))) {
-                long salTotal = this.calcularSalarioTotal((Empleado) this.comboEmp.getSelectedItem());
+                int salTotal = this.calcularSalarioTotal((Empleado) this.comboEmp.getSelectedItem());
                 if ((((Area) this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal) >= 0) {
                     ((Empleado) this.comboEmp.getSelectedItem()).setArea((Area) this.listaAreas2.getSelectedValue());
                     ((Area) this.listaAreas2.getSelectedValue()).setPresupuesto(((Area) this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal);
@@ -65,8 +65,8 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer {
         }
     }
 
-    public long calcularSalarioTotal(Empleado emp) {
-        long salarioTotal = -1;
+    public int calcularSalarioTotal(Empleado emp) {
+        int salarioTotal = -1;
         int mes = this.comboMes.getSelectedIndex();
         if (mes < 0) {
             JOptionPane.showMessageDialog(null, "Seleccione el mes de transferencia", "ERROR", 0);

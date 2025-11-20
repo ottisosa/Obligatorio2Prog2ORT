@@ -14,12 +14,14 @@ public class RepAreas extends javax.swing.JFrame implements Observer {
         this.modelo = sistema;
         this.modelo.addObserver(this);
         this.cargarLista();
-        listaAreas.setCellRenderer(new Renderer());
 
 
     }
 
     public void cargarLista() {
+        
+       listaAreas.setCellRenderer(new Renderer());
+
         
        this.modelo.ordenarAreaPorcentaje(this.modelo.getListaAreas());
        this.listaAreas.setListData(this.modelo.getListaAreas().toArray());

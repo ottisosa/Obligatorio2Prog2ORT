@@ -19,7 +19,7 @@ public class Renderer extends DefaultListCellRenderer {
 
         Area area = (Area) value;
 
-        long porcentaje = area.porcentajeP();
+        int porcentaje = area.getPorcentaje();
 
         if (porcentaje >= 90 && !isSelected) {
             label.setBackground(Color.RED);

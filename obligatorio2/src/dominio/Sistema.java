@@ -179,7 +179,7 @@ public class Sistema extends Observable {
 
         @Override
         public int compare(Area ar1, Area ar2) {
-            return Long.compare(ar1.porcentajeP(), ar2.porcentajeP());
+            return Integer.compare(ar1.getPorcentaje(), ar2.getPorcentaje());
     }
 
 }

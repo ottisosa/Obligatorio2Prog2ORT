@@ -79,8 +79,8 @@ public class EmpAlta extends javax.swing.JFrame implements Observer{
     public boolean calcularSalario(){
         boolean hayPlata = false;
                 
-        long salTotal = ((Long.parseLong(this.txtSalario.getText()))*12);
-        long Pres = this.area.getPresupuesto();
+        int salTotal = ((Integer.parseInt(this.txtSalario.getText()))*12);
+        int Pres = this.area.getPresupuesto();
         if(salTotal<=Pres){
             hayPlata = true;
             this.area.setPresupuesto(Pres - salTotal);
