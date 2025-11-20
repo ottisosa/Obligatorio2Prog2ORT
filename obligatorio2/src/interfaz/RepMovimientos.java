@@ -12,45 +12,65 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         this.setLocationRelativeTo(null);
         this.modelo = sistema;
         this.modelo.addObserver(this);
-        this.cargarLista();
+        
+        this.modeloTabla = new javax.swing.table.DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        this.modeloTabla.addColumn("Mes");
+        this.modeloTabla.addColumn("Origen");
+        this.modeloTabla.addColumn("Destino");
+        this.modeloTabla.addColumn("Empleado");
+        this.tablaMov.setModel(modeloTabla);
+        
         this.cargarCombos();
     }
     
-    public void cargarLista(){
+    public void cargarTabla(){
+        modeloTabla.setRowCount(0);
+        
         ArrayList<Movimiento> listaMov = new ArrayList<>();
         for (int i = 0; i < this.modelo.getListaMovimientos().size(); i++) {
             listaMov.add(this.modelo.getListaMovimientos().get(i));
         }
         
-        if(this.comboMes.getSelectedIndex()!=0){
-            for (int i = listaMov.size()-1; i >= 0; i--) {
-                if(!(listaMov.get(i).getMes().equals(this.comboMes.getSelectedItem()))){
+        for (int i = 0; i < listaMov.size(); i++) {
+            if(this.comboMes.getSelectedIndex()!=0){
+                if(this.comboMes.getSelectedItem().equals(listaMov.get(i).getMes())){
+                    listaMov.remove(i);
+                }
+            }
+            
+            if(this.comboOrigen.getSelectedIndex()!=0){
+                if(this.comboOrigen.getSelectedItem().equals(listaMov.get(i).getOrigen())){
+                    listaMov.remove(i);
+                }
+            }
+            
+            if(this.comboDestino.getSelectedIndex()!=0){
+                if(this.comboDestino.getSelectedItem().equals(listaMov.get(i).getDestino())){
+                    listaMov.remove(i);
+                }
+            }
+            
+            if(this.comboEmpleado.getSelectedIndex()!=0){
+                if(this.comboEmpleado.getSelectedItem().equals(listaMov.get(i).getEmp())){
                     listaMov.remove(i);
                 }
             }
         }
-        if(this.comboOrigen.getSelectedIndex()!=0){
-            for (int i = listaMov.size()-1; i >= 0; i--) {
-                if(!(listaMov.get(i).getOrigen().equals(this.comboOrigen.getSelectedItem()))){
-                    listaMov.remove(i);
-                }
-            }
+        
+        for (int i = 0; i < listaMov.size(); i++) {
+            Movimiento m = listaMov.get(i);
+            this.modeloTabla.addRow(new Object[]{
+                    m.getMes(),
+                    m.getOrigen().getNombre(),
+                    m.getDestino().getNombre(),
+                    m.getEmp().getNombre()
+            });
         }
-        if(this.comboDestino.getSelectedIndex()!=0){
-            for (int i = listaMov.size()-1; i >= 0; i--) {
-                if(!(listaMov.get(i).getDestino().equals(this.comboDestino.getSelectedItem()))){
-                    listaMov.remove(i);
-                }
-            }
-        }
-        if(this.comboEmpleado.getSelectedIndex()!=0){
-            for (int i = listaMov.size()-1; i >= 0; i--) {
-                if(!(listaMov.get(i).getEmp().equals(this.comboEmpleado.getSelectedItem()))){
-                    listaMov.remove(i);
-                }
-            }
-        }
-        this.listaMovimientos.setListData(listaMov.toArray());
     }
     
     public void cargarCombos(){
@@ -73,14 +93,11 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         }
     }
     
-    public void cargarDatos(){
-        
-    }
     
     @Override
     public void update(Observable o, Object arg){
-        this.cargarLista();
         this.cargarCombos();
+        this.cargarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -88,15 +105,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaMovimientos = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        txtEmpleado = new javax.swing.JLabel();
-        txtOrigen = new javax.swing.JLabel();
-        txtDestino = new javax.swing.JLabel();
-        txtMes = new javax.swing.JLabel();
         comboMes = new javax.swing.JComboBox<>();
         comboOrigen = new javax.swing.JComboBox();
         comboEmpleado = new javax.swing.JComboBox();
@@ -105,7 +114,8 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         comboDestino = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaMov = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reporte de movimientos");
@@ -115,66 +125,11 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         panel.setBackground(new java.awt.Color(70, 130, 180));
         panel.setLayout(null);
 
-        listaMovimientos.setBackground(new java.awt.Color(255, 255, 255));
-        listaMovimientos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
-        listaMovimientos.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        listaMovimientos.setForeground(new java.awt.Color(0, 0, 0));
-        listaMovimientos.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        listaMovimientos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listaMovimientosValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(listaMovimientos);
-
-        panel.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 70, 154, 270);
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Filtrar por:");
         panel.add(jLabel1);
-        jLabel1.setBounds(210, 40, 150, 32);
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 102));
-        jPanel1.setLayout(null);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Movimiento:");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 10, 150, 30);
-
-        txtEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmpleado.setText("Empleado");
-        jPanel1.add(txtEmpleado);
-        txtEmpleado.setBounds(20, 210, 110, 30);
-
-        txtOrigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtOrigen.setForeground(new java.awt.Color(255, 255, 255));
-        txtOrigen.setText("Origen");
-        jPanel1.add(txtOrigen);
-        txtOrigen.setBounds(20, 110, 110, 30);
-
-        txtDestino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtDestino.setForeground(new java.awt.Color(255, 255, 255));
-        txtDestino.setText("Destino");
-        jPanel1.add(txtDestino);
-        txtDestino.setBounds(20, 160, 110, 30);
-
-        txtMes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtMes.setForeground(new java.awt.Color(255, 255, 255));
-        txtMes.setText("Mes");
-        jPanel1.add(txtMes);
-        txtMes.setBounds(20, 60, 110, 30);
-
-        panel.add(jPanel1);
-        jPanel1.setBounds(350, 80, 170, 270);
+        jLabel1.setBounds(20, 10, 150, 32);
 
         comboMes.setBackground(new java.awt.Color(255, 255, 255));
         comboMes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -188,7 +143,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
             }
         });
         panel.add(comboMes);
-        comboMes.setBounds(200, 110, 130, 22);
+        comboMes.setBounds(20, 90, 130, 22);
 
         comboOrigen.setBackground(new java.awt.Color(255, 255, 255));
         comboOrigen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -202,7 +157,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
             }
         });
         panel.add(comboOrigen);
-        comboOrigen.setBounds(200, 180, 130, 22);
+        comboOrigen.setBounds(20, 160, 130, 22);
 
         comboEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         comboEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -217,31 +172,31 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
             }
         });
         panel.add(comboEmpleado);
-        comboEmpleado.setBounds(200, 320, 130, 22);
+        comboEmpleado.setBounds(20, 300, 130, 22);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Empleado");
         panel.add(jLabel7);
-        jLabel7.setBounds(200, 290, 110, 30);
+        jLabel7.setBounds(20, 270, 110, 30);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Mes");
         panel.add(jLabel11);
-        jLabel11.setBounds(200, 80, 110, 30);
+        jLabel11.setBounds(20, 60, 110, 30);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Origen");
         panel.add(jLabel12);
-        jLabel12.setBounds(200, 150, 110, 30);
+        jLabel12.setBounds(20, 130, 110, 30);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Destino");
         panel.add(jLabel13);
-        jLabel13.setBounds(200, 220, 110, 30);
+        jLabel13.setBounds(20, 200, 110, 30);
 
         comboDestino.setBackground(new java.awt.Color(255, 255, 255));
         comboDestino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -255,13 +210,25 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
             }
         });
         panel.add(comboDestino);
-        comboDestino.setBounds(200, 250, 130, 22);
+        comboDestino.setBounds(20, 230, 130, 22);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Movimientos:");
-        panel.add(jLabel2);
-        jLabel2.setBounds(20, 30, 170, 32);
+        tablaMov.setBackground(new java.awt.Color(255, 255, 255));
+        tablaMov.setForeground(new java.awt.Color(0, 0, 0));
+        tablaMov.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaMov);
+
+        panel.add(jScrollPane1);
+        jScrollPane1.setBounds(180, 50, 350, 300);
 
         getContentPane().add(panel);
         panel.setBounds(0, 0, 570, 390);
@@ -270,24 +237,20 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMesActionPerformed
-        this.cargarLista();
+        this.cargarTabla();
     }//GEN-LAST:event_comboMesActionPerformed
 
     private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
-        this.cargarLista();
+        this.cargarTabla();
     }//GEN-LAST:event_comboOrigenActionPerformed
 
     private void comboDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoActionPerformed
-        this.cargarLista();
+        this.cargarTabla();
     }//GEN-LAST:event_comboDestinoActionPerformed
 
     private void comboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEmpleadoActionPerformed
-        this.cargarLista();
+        this.cargarTabla();
     }//GEN-LAST:event_comboEmpleadoActionPerformed
-
-    private void listaMovimientosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaMovimientosValueChanged
-        this.cargarDatos();
-    }//GEN-LAST:event_listaMovimientosValueChanged
 
 
 
@@ -300,17 +263,11 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList listaMovimientos;
     private javax.swing.JPanel panel;
-    private javax.swing.JLabel txtDestino;
-    private javax.swing.JLabel txtEmpleado;
-    private javax.swing.JLabel txtMes;
-    private javax.swing.JLabel txtOrigen;
+    private javax.swing.JTable tablaMov;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+    private javax.swing.table.DefaultTableModel modeloTabla;
 }

@@ -172,5 +172,5 @@ public class RepAreas extends javax.swing.JFrame implements Observer {
     private javax.swing.JList listaAreas;
     private javax.swing.JList listaEmp;
     // End of variables declaration//GEN-END:variables
-private Sistema modelo;
+    private Sistema modelo;
 }
