@@ -26,9 +26,7 @@ public class Renderer extends DefaultListCellRenderer {
             label.setForeground(Color.BLACK);
             label.setOpaque(true);
 
-        }
-
-        if (porcentaje < 90 && porcentaje >= 70 && !isSelected) {
+        } else if (porcentaje >= 70 && !isSelected) {
             label.setBackground(Color.YELLOW);
             label.setForeground(Color.BLACK);
             label.setOpaque(true);
@@ -37,10 +35,9 @@ public class Renderer extends DefaultListCellRenderer {
             label.setBackground(Color.GRAY);
             label.setForeground(Color.BLACK);
             label.setOpaque(true);
-
         }
 
-        label.setText(area.getNombre() + " (" + (int) porcentaje + "%)");
+        label.setText(area.getNombre() + " (" + porcentaje + "%)");
 
         return label;
     }
