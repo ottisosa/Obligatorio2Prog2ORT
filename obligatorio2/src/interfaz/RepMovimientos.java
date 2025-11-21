@@ -3,7 +3,10 @@ package interfaz;
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
 import dominio.*;
+import java.io.File;
 import java.util.*;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class RepMovimientos extends javax.swing.JFrame implements Observer{
     
@@ -274,7 +277,49 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_comboEmpleadoActionPerformed
 
     private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
-        
+        if(this.tablaMov.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "No hay datos en la tabla para exportar", "ERROR", 0);
+        }
+        else{
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Guardar CSV");
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos CSV (*.csv)", "csv"));
+            int userSelection = fileChooser.showSaveDialog(this);
+            
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                String ruta = fileToSave.getAbsolutePath();
+                if (!ruta.toLowerCase().endsWith(".csv")) {
+                    ruta += ".csv";
+                }
+                
+                File tempFile = new File(ruta);
+                boolean reemplazar = true;
+                if (tempFile.exists()) {
+                    int respuesta = JOptionPane.showConfirmDialog(this, 
+                        "El archivo ya existe. ¿Desea reemplazarlo?", 
+                        "Confirmar", JOptionPane.YES_NO_OPTION);
+                    if (respuesta != JOptionPane.YES_OPTION) {
+                        reemplazar = false;
+                    }
+                }
+                
+                if (reemplazar){
+                    ArchGrabacion arch = new ArchGrabacion(ruta);
+                    arch.grabarLinea("Mes;Origen;Destino;Empleado");
+                    for (int i = 0; i < this.tablaMov.getRowCount(); i++) {
+                        String mes = this.tablaMov.getValueAt(i, 0).toString();
+                        String origen = this.tablaMov.getValueAt(i, 1).toString();
+                        String destino = this.tablaMov.getValueAt(i, 2).toString();
+                        String emp = this.tablaMov.getValueAt(i, 3).toString();
+                
+                        arch.grabarLinea(mes + ";" + origen + ";" + destino + ";" + emp);
+                    }
+                    arch.cerrar();
+                    JOptionPane.showMessageDialog(this, "Archivo creado exitosamente en: \n" + ruta);
+                }
+            }
+        }
     }//GEN-LAST:event_btnExportarActionPerformed
 
 
