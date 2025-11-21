@@ -38,7 +38,6 @@ public class AreasMovimiento extends javax.swing.JFrame implements Observer {
 
     public void moverEmp() {
         if (this.listaAreas.getSelectedValue() != null && this.listaAreas2.getSelectedValue() != null) {
-            System.out.println(this.comboEmp.getSelectedItem());
             if (!(this.comboEmp.getSelectedItem().equals("Sin empleados"))) {
                 int salTotal = this.calcularSalarioTotal((Empleado) this.comboEmp.getSelectedItem());
                 if ((((Area) this.listaAreas2.getSelectedValue()).getPresupuesto() - salTotal) >= 0) {
