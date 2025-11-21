@@ -36,28 +36,33 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
             listaMov.add(this.modelo.getListaMovimientos().get(i));
         }
         
-        for (int i = 0; i < listaMov.size(); i++) {
-            if(this.comboMes.getSelectedIndex()!=0){
-                if(this.comboMes.getSelectedItem().equals(listaMov.get(i).getMes())){
+        for (int i = listaMov.size()-1; i >= 0; i--) {
+            boolean remove = false;
+            if(this.comboMes.getSelectedIndex()!=0 && this.comboMes.getSelectedIndex()!=-1 && !remove){
+                if(!this.comboMes.getSelectedItem().equals(listaMov.get(i).getMes())){
                     listaMov.remove(i);
+                    remove = true;
                 }
             }
             
-            if(this.comboOrigen.getSelectedIndex()!=0){
-                if(this.comboOrigen.getSelectedItem().equals(listaMov.get(i).getOrigen())){
+            if(this.comboOrigen.getSelectedIndex()!=0 && this.comboOrigen.getSelectedIndex()!=-1 && !remove){
+                if(!this.comboOrigen.getSelectedItem().equals(listaMov.get(i).getOrigen())){
                     listaMov.remove(i);
+                    remove = true;
                 }
             }
             
-            if(this.comboDestino.getSelectedIndex()!=0){
-                if(this.comboDestino.getSelectedItem().equals(listaMov.get(i).getDestino())){
+            if(this.comboDestino.getSelectedIndex()!=0 && this.comboDestino.getSelectedIndex()!=-1 && !remove){
+                if(!this.comboDestino.getSelectedItem().equals(listaMov.get(i).getDestino())){
                     listaMov.remove(i);
+                    remove = true;
                 }
             }
             
-            if(this.comboEmpleado.getSelectedIndex()!=0){
-                if(this.comboEmpleado.getSelectedItem().equals(listaMov.get(i).getEmp())){
+            if(this.comboEmpleado.getSelectedIndex()!=0 && this.comboEmpleado.getSelectedIndex()!=-1 && !remove){
+                if(!this.comboEmpleado.getSelectedItem().equals(listaMov.get(i).getEmp())){
                     listaMov.remove(i);
+                    remove = true;
                 }
             }
         }
@@ -116,6 +121,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         comboDestino = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMov = new javax.swing.JTable();
+        btnExportar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reporte de movimientos");
@@ -228,7 +234,22 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         jScrollPane1.setViewportView(tablaMov);
 
         panel.add(jScrollPane1);
-        jScrollPane1.setBounds(180, 50, 350, 300);
+        jScrollPane1.setBounds(180, 50, 350, 230);
+
+        btnExportar.setBackground(new java.awt.Color(0, 0, 102));
+        btnExportar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnExportar.setForeground(new java.awt.Color(255, 255, 255));
+        btnExportar.setText("Eliminar ");
+        btnExportar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
+        btnExportar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnExportar.setFocusPainted(false);
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
+        panel.add(btnExportar);
+        btnExportar.setBounds(290, 300, 129, 40);
 
         getContentPane().add(panel);
         panel.setBounds(0, 0, 570, 390);
@@ -252,9 +273,14 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         this.cargarTabla();
     }//GEN-LAST:event_comboEmpleadoActionPerformed
 
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+        
+    }//GEN-LAST:event_btnExportarActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExportar;
     private javax.swing.JComboBox comboDestino;
     private javax.swing.JComboBox comboEmpleado;
     private javax.swing.JComboBox<String> comboMes;
