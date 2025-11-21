@@ -62,7 +62,7 @@ public class Area implements Comparable<Area> {
 
     public int getPorcentaje() {
 
-        return (( (presupuestoTotal - presupuesto) / presupuestoTotal) * 100);
+        return ((presupuestoTotal - presupuesto)*100 / presupuestoTotal);
     }
 
     @Override
