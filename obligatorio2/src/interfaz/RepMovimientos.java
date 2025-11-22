@@ -242,7 +242,7 @@ public class RepMovimientos extends javax.swing.JFrame implements Observer{
         btnExportar.setBackground(new java.awt.Color(0, 0, 102));
         btnExportar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnExportar.setForeground(new java.awt.Color(255, 255, 255));
-        btnExportar.setText("Eliminar ");
+        btnExportar.setText("Guardar");
         btnExportar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 4, 4, 0, new java.awt.Color(0, 0, 0)));
         btnExportar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExportar.setFocusPainted(false);
