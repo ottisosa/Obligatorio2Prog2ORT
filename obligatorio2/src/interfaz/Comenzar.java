@@ -1,5 +1,11 @@
 package interfaz;
+
 import dominio.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import javax.swing.JOptionPane;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 public class Comenzar extends javax.swing.JFrame {
@@ -120,9 +126,26 @@ public class Comenzar extends javax.swing.JFrame {
 
     private void btnSisGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisGuardadoActionPerformed
 
+        try {
+            FileInputStream arch = new FileInputStream("Guardado");
+            ObjectInputStream leer = new ObjectInputStream(arch);
+            this.modelo = (Sistema) leer.readObject();
+            leer.close();
+
+        } catch (IOException e) {
+
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar los datos", "ERROR", 0);
+
+        } catch (ClassNotFoundException e) {
+
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar los datos", "ERROR", 0);
+
+        }
+
         Menu men = new Menu(this.modelo);
         this.dispose();
         men.setVisible(true);
+
     }//GEN-LAST:event_btnSisGuardadoActionPerformed
 
     private void btnSisCargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisCargadoActionPerformed
@@ -130,16 +153,16 @@ public class Comenzar extends javax.swing.JFrame {
         Menu men = new Menu(this.modelo);
         this.dispose();
         men.setVisible(true);
-        Area per = new Area("Personal","Reclutamiento de personal, promociones, gestión de cargos",100000, this.modelo);
-        Area RRHH = new Area("RRHH","Relacionamiento en la empresa, organigrama, gestión de equipo",80000, this.modelo);
-        Area seg = new Area("Seguridad","Seguridad física, vigilancia, seguridad informática, protocolos y políticas de seguridad",120000, this.modelo);
-        Area com = new Area("Comunicaciones","Comunicaciones internas, reglas y protocolos, comunicaciones con proveedores y clientes",20000, this.modelo);
-        Area mark = new Area("Marketing","Acciones planificadas, publicidad en medios masivos, publicidad en redes, gestión de redes",95000, this.modelo);
-        Manager man1 = new Manager(10,"Ana Martinez","4.568.369-1","099123456", this.modelo);
-        Manager man2 = new Manager(4,"Ricardo Morales","3.214.589-3","094121212", this.modelo);
-        Manager man3 = new Manager(1,"Laura Torales","3.589.257-5","099654321", this.modelo);
-        Manager man4 = new Manager(5,"Juan Pablo Zapata","4.555.197-7","099202020", this.modelo);
-        
+        Area per = new Area("Personal", "Reclutamiento de personal, promociones, gestión de cargos", 100000, this.modelo);
+        Area RRHH = new Area("RRHH", "Relacionamiento en la empresa, organigrama, gestión de equipo", 80000, this.modelo);
+        Area seg = new Area("Seguridad", "Seguridad física, vigilancia, seguridad informática, protocolos y políticas de seguridad", 120000, this.modelo);
+        Area com = new Area("Comunicaciones", "Comunicaciones internas, reglas y protocolos, comunicaciones con proveedores y clientes", 20000, this.modelo);
+        Area mark = new Area("Marketing", "Acciones planificadas, publicidad en medios masivos, publicidad en redes, gestión de redes", 95000, this.modelo);
+        Manager man1 = new Manager(10, "Ana Martinez", "4.568.369-1", "099123456", this.modelo);
+        Manager man2 = new Manager(4, "Ricardo Morales", "3.214.589-3", "094121212", this.modelo);
+        Manager man3 = new Manager(1, "Laura Torales", "3.589.257-5", "099654321", this.modelo);
+        Manager man4 = new Manager(5, "Juan Pablo Zapata", "4.555.197-7", "099202020", this.modelo);
+
     }//GEN-LAST:event_btnSisCargadoActionPerformed
 
 
