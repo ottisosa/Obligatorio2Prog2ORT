@@ -1,7 +1,9 @@
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 package dominio;
 
-public class Area implements Comparable<Area> {
+import java.io.Serializable;
+
+public class Area implements Comparable<Area>, Serializable {
 
     private String nombre;
     private String descripcion;

@@ -2,7 +2,9 @@ package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
-public abstract class Persona {
+import java.io.Serializable;
+
+public abstract class Persona implements Serializable{
     protected String nombre;
     protected String ci;
     protected String celular;

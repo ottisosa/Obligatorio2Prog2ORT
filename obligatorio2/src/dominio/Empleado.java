@@ -2,7 +2,9 @@ package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
-public class Empleado extends Persona implements Comparable<Empleado>{
+import java.io.Serializable;
+
+public class Empleado extends Persona implements Comparable<Empleado>, Serializable{
     private int salario;
     private Manager manager;
     private Area area;

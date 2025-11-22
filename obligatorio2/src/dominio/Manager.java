@@ -2,7 +2,9 @@ package dominio;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
-public class Manager extends Persona implements Comparable<Manager> {
+import java.io.Serializable;
+
+public class Manager extends Persona implements Comparable<Manager>, Serializable {
 
     private int antiguedad;
 

@@ -1,6 +1,10 @@
 package dominio;
 
-public class Movimiento implements Comparable<Movimiento>{
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
+import java.io.Serializable;
+
+public class Movimiento implements Comparable<Movimiento>, Serializable{
     private String mes;
     private int nroMes;
     private Empleado emp;
