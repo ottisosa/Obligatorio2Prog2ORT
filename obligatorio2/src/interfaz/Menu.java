@@ -1,18 +1,20 @@
 package interfaz;
+
 import dominio.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
 
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
-
-
 public class Menu extends javax.swing.JFrame {
-
     
     public Menu(Sistema sistema) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.modelo=sistema;
+        this.modelo = sistema;
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,9 +38,14 @@ public class Menu extends javax.swing.JFrame {
         repAr = new javax.swing.JMenuItem();
         repMov = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Menu");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(70, 130, 180));
@@ -216,6 +223,26 @@ public class Menu extends javax.swing.JFrame {
         RepMovimientos vent = new RepMovimientos(this.modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_repMovActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
+        try {
+            
+            FileOutputStream arch = new FileOutputStream("Guardado");
+            ObjectOutputStream grabar = new ObjectOutputStream(arch);
+            grabar.writeObject(this.modelo);
+            grabar.close();
+            
+            System.exit(0);
+            
+        } catch (IOException e) {
+            
+            JOptionPane.showMessageDialog(null, "No se pudieron guardar los datos", "ERROR", 0);
+            
+        }
+        
+
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

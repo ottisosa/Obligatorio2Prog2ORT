@@ -1,9 +1,10 @@
 // Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 package dominio;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Sistema extends Observable {
+public class Sistema extends Observable implements Serializable{
 
     private ArrayList<Persona> listaPersonas;
     private ArrayList<Empleado> listaEmpleados;
