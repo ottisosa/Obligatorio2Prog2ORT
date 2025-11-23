@@ -1,5 +1,7 @@
 package interfaz;
 
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
 import dominio.*;
 import java.util.Observable;
 import java.util.Observer;

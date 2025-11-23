@@ -1,12 +1,13 @@
 package interfaz;
 
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
 import dominio.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
-// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 public class Menu extends javax.swing.JFrame {
     
     public Menu(Sistema sistema) {

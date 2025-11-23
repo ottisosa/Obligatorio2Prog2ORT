@@ -1,5 +1,6 @@
-// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 package dominio;
+
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 
 import java.io.Serializable;
 

@@ -1,5 +1,7 @@
 package interfaz;
 
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
 import dominio.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import javax.swing.JOptionPane;
 
-// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
 public class Comenzar extends javax.swing.JFrame {
 
     public Comenzar(Sistema sistema) {

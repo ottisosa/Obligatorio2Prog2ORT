@@ -1,4 +1,7 @@
 package dominio;
+
+// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -11,7 +14,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
 import javax.swing.JOptionPane;
-// Autores: Santiago Quintana (327886), Octavio Sosa (363131)
+
 
 public class Gemini {
     private static final String MODEL_NAME = "gemini-2.5-flash";
