@@ -70,4 +70,22 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="package-for-store" depends="jar">
+        <property name="store.jar.name" value="Obligatorio2_Ejecutable.jar"/>
+        
+        <property name="store.dir" value="store"/>
+        <property name="store.jar" value="${store.dir}/${store.jar.name}"/>
+
+        <echo message="Empaquetando todo en un único JAR en ${store.jar}"/>
+
+        <delete dir="${store.dir}"/>
+        <mkdir dir="${store.dir}"/>
+
+        <jar destfile="${store.jar}" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+            <zipgroupfileset dir="dist/lib" includes="*.jar"/>
+        </jar>
+    </target>
 </project>
